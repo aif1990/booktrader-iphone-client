@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class CollectionViewController;
+@class WantedViewController;
+@class NavigationController;
+
 @interface booksAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+    
+	UIWindow *window;
+    UITabBarController *tabBarController;
+    IBOutlet NavigationController *navigationController;
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet NavigationController *navigationController;
+
 
 @end
