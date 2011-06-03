@@ -22,5 +22,6 @@
 -(IBAction)back;
 -(IBAction)textFieldDoneEditing:(id)sender;
 -(IBAction)backgroundClick:(id)sender;
+-(IBAction)login;
 
 @end

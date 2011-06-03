@@ -7,6 +7,9 @@
 //
 
 #import "LoginView.h"
+#import "CoreFoundation/CFString.h"
+//#import "ASIHTTPRequest.h"
+//#import "ASIFormDataRequest.h"
 
 
 @implementation LoginView
@@ -70,6 +73,49 @@
     
     //[super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (NSString *)urlEncodeValue:(NSString *)str
+{
+    NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR(":/?#[]@!$&’()*+,;=”"), kCFStringEncodingUTF8);
+    
+    return [result autorelease];
+}
+
+- (IBAction)login {
+    
+    
+    NSURL *url = [NSURL URLWithString:@"http://146.169.25.146:6543/users/login"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:myusername.text forHTTPHeaderField:@"username"];
+    
+    [request setValue:mypassword.text forHTTPHeaderField:@"password"];
+    NSString *text = [NSString stringWithFormat:@"username=%@&password=%@&Login=Login&came_from=ana", [self urlEncodeValue:myusername.text], [self urlEncodeValue:mypassword.text]];
+    
+    NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:requestBody];
+    
+    
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    
+    if (requestError)
+	{
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not logon to server" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
+	else if (response)
+	{
+		NSLog (@"[DEBUG]: HTTP Response is %@", responseString);
+	}
+    
+    
+    // [response release];
 }
 
 - (void)viewDidUnload

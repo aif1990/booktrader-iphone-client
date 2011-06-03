@@ -10,6 +10,7 @@
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
+		9AE200401399712E002D5E97 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE2003F1399712E002D5E97 /* CoreFoundation.framework */; };
 		9AE2FEAD1399209E002D5E97 /* NewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2FEAB1399209E002D5E97 /* NewMessageView.m */; };
 		9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */; };
 		9AEA4DF113964F1700C5BE43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEA4DF013964F1700C5BE43 /* UIKit.framework */; };
@@ -58,6 +59,7 @@
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		9AB0F0091397F44E00A8A687 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		9AB0F00A1397F44F00A8A687 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		9AE2003F1399712E002D5E97 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		9AE2FEAA1399209E002D5E97 /* NewMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageView.h; sourceTree = "<group>"; };
 		9AE2FEAB1399209E002D5E97 /* NewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageView.m; sourceTree = "<group>"; };
 		9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMessageView.xib; sourceTree = "<group>"; };
@@ -108,9 +110,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE200401399712E002D5E97 /* CoreFoundation.framework in Frameworks */,
+				9AEA4DF513964F1700C5BE43 /* CoreGraphics.framework in Frameworks */,
 				9AEA4DF113964F1700C5BE43 /* UIKit.framework in Frameworks */,
 				9AEA4DF313964F1700C5BE43 /* Foundation.framework in Frameworks */,
-				9AEA4DF513964F1700C5BE43 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +152,7 @@
 		9AEA4DEF13964F1700C5BE43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9AE2003F1399712E002D5E97 /* CoreFoundation.framework */,
 				9AEA4DF013964F1700C5BE43 /* UIKit.framework */,
 				9AEA4DF213964F1700C5BE43 /* Foundation.framework */,
 				9AEA4DF413964F1700C5BE43 /* CoreGraphics.framework */,
