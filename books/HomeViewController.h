@@ -20,6 +20,7 @@
 - (void)actionSheet:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
 - (void)openLoginView;
 - (void)openRegisterView;
+- (void)Logout;
 
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 

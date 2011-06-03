@@ -19,7 +19,7 @@
 
 -(IBAction)showActionSheet {
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Account" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Continue" otherButtonTitles:@"Login",@"Register", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Account" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Continue" otherButtonTitles:@"Login",@"Register", @"Logout", nil];
     [actionSheet showInView:self.view];
     
     [actionSheet release];
@@ -44,6 +44,10 @@
             //handle a register
             [self openRegisterView];
             break;
+            
+        case 3:
+            [self Logout];
+            break;
                 
         default:
             //do whatever
@@ -57,6 +61,18 @@
     RegisterView *settingDetail = [[RegisterView alloc] initWithNibName:@"RegisterView" bundle:nil];
     [self presentModalViewController:settingDetail animated:YES];
     [settingDetail release];
+    
+}
+
+- (void)Logout {
+    
+    NSURL *url = [NSURL URLWithString:@"http://146.169.25.146:6543/users/logout"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
 }
 
