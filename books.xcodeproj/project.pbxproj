@@ -10,6 +10,8 @@
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
+		9AE2FEAD1399209E002D5E97 /* NewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2FEAB1399209E002D5E97 /* NewMessageView.m */; };
+		9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */; };
 		9AEA4DF113964F1700C5BE43 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEA4DF013964F1700C5BE43 /* UIKit.framework */; };
 		9AEA4DF313964F1700C5BE43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEA4DF213964F1700C5BE43 /* Foundation.framework */; };
 		9AEA4DF513964F1700C5BE43 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AEA4DF413964F1700C5BE43 /* CoreGraphics.framework */; };
@@ -36,6 +38,8 @@
 		9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4513965FA200C5BE43 /* WantedViewController.xib */; };
 		9AF1BE791398C9DD005E7365 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE771398C9DD005E7365 /* RegisterView.m */; };
 		9AF1BE7A1398C9DD005E7365 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE781398C9DD005E7365 /* RegisterView.xib */; };
+		9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */; };
+		9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +58,9 @@
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		9AB0F0091397F44E00A8A687 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		9AB0F00A1397F44F00A8A687 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		9AE2FEAA1399209E002D5E97 /* NewMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageView.h; sourceTree = "<group>"; };
+		9AE2FEAB1399209E002D5E97 /* NewMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageView.m; sourceTree = "<group>"; };
+		9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewMessageView.xib; sourceTree = "<group>"; };
 		9AEA4DEC13964F1700C5BE43 /* books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AEA4DF013964F1700C5BE43 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9AEA4DF213964F1700C5BE43 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +98,9 @@
 		9AF1BE761398C9DD005E7365 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
 		9AF1BE771398C9DD005E7365 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
 		9AF1BE781398C9DD005E7365 /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
+		9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +188,12 @@
 				9AF1BE761398C9DD005E7365 /* RegisterView.h */,
 				9AF1BE771398C9DD005E7365 /* RegisterView.m */,
 				9AF1BE781398C9DD005E7365 /* RegisterView.xib */,
+				9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */,
+				9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */,
+				9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */,
+				9AE2FEAA1399209E002D5E97 /* NewMessageView.h */,
+				9AE2FEAB1399209E002D5E97 /* NewMessageView.m */,
+				9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -292,6 +308,8 @@
 				9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */,
 				9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */,
 				9AF1BE7A1398C9DD005E7365 /* RegisterView.xib in Resources */,
+				9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */,
+				9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +356,8 @@
 				9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */,
 				9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */,
 				9AF1BE791398C9DD005E7365 /* RegisterView.m in Sources */,
+				9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */,
+				9AE2FEAD1399209E002D5E97 /* NewMessageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,12 +10,23 @@
 #import "CollectionViewController.h"
 #import "WantedViewController.h"
 #import "NavigationController.h"
+#import "NewMessageView.h"
 
 @implementation booksAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
+
+
+- (IBAction)openNewMessageView {
+    
+    NewMessageView *settingDetail = [[NewMessageView alloc] initWithNibName:@"NewMessageView" bundle:nil];
+    settingDetail.title = [NSString stringWithFormat:@"New Message"];
+    [self.navigationController pushViewController:settingDetail animated:YES];
+    [settingDetail release];
+    
+}
 
 
 - (id)init {
