@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class BookDetailViewController;
 
-@interface HomeViewController : UIViewController {
+@interface HomeViewController : UIViewController <UIActionSheetDelegate> {
+    
+    BookDetailViewController *bookDetailViewController;
     
 }
+
+- (IBAction)showActionSheet;
+- (void)actionSheet:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)openLoginView;
+- (void)openRegisterView;
+
+@property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 
 @end
