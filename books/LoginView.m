@@ -19,6 +19,10 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
+    
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -89,13 +93,15 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     [request setValue:myusername.text forHTTPHeaderField:@"username"];
-    
     [request setValue:mypassword.text forHTTPHeaderField:@"password"];
-    NSString *text = [NSString stringWithFormat:@"username=%@&password=%@&Login=Login&came_from=ana", [self urlEncodeValue:myusername.text], [self urlEncodeValue:mypassword.text]];
+    
+    NSString *text = [NSString stringWithFormat:@"username=%@&password=%@&Login=Login&came_from=%@", [self urlEncodeValue:myusername.text], [self urlEncodeValue:mypassword.text], [self urlEncodeValue:@"/"]];
     
     NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:requestBody];
     
+    
+        
     
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
@@ -112,6 +118,22 @@
 	else if (response)
 	{
 		NSLog (@"[DEBUG]: HTTP Response is %@", responseString);
+        
+        bool logged_in =  false;
+    
+        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
+            if ([[cookie name] isEqualToString:@"auth_tkt"]) 
+                logged_in = true;
+        }
+        
+        if (!logged_in) {
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong username/password " delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            
+        }
+
 	}
     
     
