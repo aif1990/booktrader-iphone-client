@@ -11,8 +11,16 @@
 
 @interface LoginView : UIViewController {
     
+    IBOutlet UITextField *myusername;
+    IBOutlet UITextField *mypassword;
+    
 }
 
+@property(nonatomic, retain) UITextField *myusername;
+@property(nonatomic, retain) UITextField *mypassword;
+
 -(IBAction)back;
+-(IBAction)textFieldDoneEditing:(id)sender;
+-(IBAction)backgroundClick:(id)sender;
 
 @end

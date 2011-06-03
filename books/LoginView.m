@@ -11,6 +11,9 @@
 
 @implementation LoginView
 
+@synthesize mypassword;
+@synthesize myusername;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +28,20 @@
     [self dismissModalViewControllerAnimated:YES];
     
 }
+
+- (IBAction)textFieldDoneEditing:(id)sender {
+	
+	[sender resignFirstResponder];
+	
+}
+
+- (IBAction)backgroundClick:(id)sender {
+    
+	[myusername resignFirstResponder];
+	[mypassword resignFirstResponder];
+		
+}
+
 
 - (void)dealloc
 {
@@ -43,7 +60,15 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    
+    
+    NSUserDefaults *name = [NSUserDefaults standardUserDefaults];
+    myusername.text = [name stringForKey:@"textFieldKey"];
+    
+    NSUserDefaults *passwd = [NSUserDefaults standardUserDefaults];
+    mypassword.text = [passwd stringForKey:@"passwordFieldKey"];
+    
+    //[super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
