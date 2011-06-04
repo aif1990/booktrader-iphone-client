@@ -19,6 +19,7 @@
 @synthesize navigationController;
 
 
+
 - (IBAction)openNewMessageView {
     
     NewMessageView *settingDetail = [[NewMessageView alloc] initWithNibName:@"NewMessageView" bundle:nil];

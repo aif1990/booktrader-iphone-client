@@ -13,11 +13,13 @@
     
     IBOutlet UITextField *myusername;
     IBOutlet UITextField *mypassword;
+    IBOutlet NSString *username;
     
 }
 
 @property(nonatomic, retain) UITextField *myusername;
 @property(nonatomic, retain) UITextField *mypassword;
+@property(nonatomic, retain) NSString *username;
 
 -(IBAction)back;
 -(IBAction)textFieldDoneEditing:(id)sender;

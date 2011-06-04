@@ -8,6 +8,8 @@
 
 #import "LoginView.h"
 #import "CoreFoundation/CFString.h"
+#import "HomeViewController.h"
+
 //#import "ASIHTTPRequest.h"
 //#import "ASIFormDataRequest.h"
 
@@ -16,6 +18,8 @@
 
 @synthesize mypassword;
 @synthesize myusername;
+@synthesize username;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,6 +48,12 @@
 
 - (IBAction)backgroundClick:(id)sender {
     
+    /*NSUserDefaults *name = [NSUserDefaults standardUserDefaults];
+	[name setObject:[myusername text] forKey: @"textFieldKey"];
+	
+	NSUserDefaults *passwd = [NSUserDefaults standardUserDefaults];
+	[passwd setObject:[mypassword text] forKey: @"numberFieldKey"];*/
+    
 	[myusername resignFirstResponder];
 	[mypassword resignFirstResponder];
 		
@@ -68,12 +78,12 @@
 - (void)viewDidLoad
 {
     
-    
     NSUserDefaults *name = [NSUserDefaults standardUserDefaults];
     myusername.text = [name stringForKey:@"textFieldKey"];
     
     NSUserDefaults *passwd = [NSUserDefaults standardUserDefaults];
     mypassword.text = [passwd stringForKey:@"passwordFieldKey"];
+    
     
     //[super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -89,8 +99,9 @@
 - (IBAction)login {
     
     
-    NSURL *url = [NSURL URLWithString:@"http://146.169.25.146:6543/users/login"];
+    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/login"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
     [request setHTTPMethod:@"POST"];
     [request setValue:myusername.text forHTTPHeaderField:@"username"];
     [request setValue:mypassword.text forHTTPHeaderField:@"password"];
@@ -100,7 +111,7 @@
     NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:requestBody];
     
-    
+    username = @"Not logged in";
         
     
     NSURLResponse *response = NULL;
@@ -124,16 +135,18 @@
         for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
             if ([[cookie name] isEqualToString:@"auth_tkt"]) 
                 logged_in = true;
+                username = myusername.text;
         }
         
         if (!logged_in) {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong username/password " delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+            username = @"Not logged in";
             [alert show];
             [alert release];
             
         }
-
+        
 	}
     
     

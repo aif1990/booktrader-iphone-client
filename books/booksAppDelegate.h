@@ -19,6 +19,7 @@
 	UIWindow *window;
     UITabBarController *tabBarController;
     IBOutlet NavigationController *navigationController;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

@@ -16,6 +16,22 @@
 @implementation HomeViewController
 
 @synthesize bookDetailViewController;
+@synthesize welcomeMessage;
+@synthesize loginView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    
+    NSHTTPCookieStorage *cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
+    
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+        loginView = NULL;
+    }
+    return self;
+}
 
 -(IBAction)showActionSheet {
     
@@ -66,13 +82,20 @@
 
 - (void)Logout {
     
-    NSURL *url = [NSURL URLWithString:@"http://146.169.25.146:6543/users/logout"];
+    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/logout"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    
+    //NSURLRequest* request = [NSURLRequest requestWithURL: url
+                                          //   cachePolicy: NSURLRequestReloadIgnoringCacheData 
+                                        // timeoutInterval:5.0];
+    [request setTimeoutInterval:5];
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    
+    welcomeMessage.text = @"Not logged in";
+    
+    [loginView release];
+    loginView = NULL;
     
 }
 
@@ -81,11 +104,11 @@
     [self presentModalViewController:myController animated:YES];
     [myController release];*/
     
-    LoginView *settingDetail = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
+    loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
     
-    [self presentModalViewController:settingDetail animated:YES];
+    [self presentModalViewController:loginView animated:YES];
     
-    [settingDetail release];
+    //[loginView autorelease];
     
     
 }
@@ -93,11 +116,21 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+    welcomeMessage.text = @"Not logged in";
+    
     [super viewDidLoad];
 
 }
 
+- (void)viewDidAppear:(BOOL)animated 
+{
 
+    if (loginView !=NULL && loginView.username != NULL) 
+        welcomeMessage.text = loginView.username;
+    
+     //return YES;
+    
+}
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

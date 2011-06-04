@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class BookDetailViewController;
+@class LoginView;
 
 @interface HomeViewController : UIViewController <UIActionSheetDelegate> {
     
     BookDetailViewController *bookDetailViewController;
+    IBOutlet UILabel *welcomeMessage;
+    LoginView *loginView;
     
 }
 
@@ -22,6 +25,8 @@
 - (void)openRegisterView;
 - (void)Logout;
 
+@property(nonatomic, retain) LoginView *loginView;
+@property(nonatomic, retain) UILabel *welcomeMessage;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 
 @end
