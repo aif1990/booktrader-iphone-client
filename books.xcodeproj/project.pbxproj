@@ -37,8 +37,6 @@
 		9AEA4E4213965EDE00C5BE43 /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4013965EDE00C5BE43 /* CollectionViewController.xib */; };
 		9AEA4E4613965FA200C5BE43 /* WantedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4413965FA100C5BE43 /* WantedViewController.m */; };
 		9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4513965FA200C5BE43 /* WantedViewController.xib */; };
-		9AF1BE791398C9DD005E7365 /* RegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE771398C9DD005E7365 /* RegisterView.m */; };
-		9AF1BE7A1398C9DD005E7365 /* RegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE781398C9DD005E7365 /* RegisterView.xib */; };
 		9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */; };
 		9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */; };
 /* End PBXBuildFile section */
@@ -97,9 +95,6 @@
 		9AEA4E4313965FA100C5BE43 /* WantedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantedViewController.h; sourceTree = "<group>"; };
 		9AEA4E4413965FA100C5BE43 /* WantedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantedViewController.m; sourceTree = "<group>"; };
 		9AEA4E4513965FA200C5BE43 /* WantedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WantedViewController.xib; sourceTree = "<group>"; };
-		9AF1BE761398C9DD005E7365 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
-		9AF1BE771398C9DD005E7365 /* RegisterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterView.m; sourceTree = "<group>"; };
-		9AF1BE781398C9DD005E7365 /* RegisterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegisterView.xib; sourceTree = "<group>"; };
 		9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
@@ -189,9 +184,6 @@
 				9AB0F0081397F44E00A8A687 /* LoginView.h */,
 				9AB0F0091397F44E00A8A687 /* LoginView.m */,
 				9AB0F00A1397F44F00A8A687 /* LoginView.xib */,
-				9AF1BE761398C9DD005E7365 /* RegisterView.h */,
-				9AF1BE771398C9DD005E7365 /* RegisterView.m */,
-				9AF1BE781398C9DD005E7365 /* RegisterView.xib */,
 				9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */,
 				9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */,
 				9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */,
@@ -311,7 +303,6 @@
 				9AEA4E4213965EDE00C5BE43 /* CollectionViewController.xib in Resources */,
 				9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */,
 				9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */,
-				9AF1BE7A1398C9DD005E7365 /* RegisterView.xib in Resources */,
 				9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */,
 				9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */,
 			);
@@ -359,7 +350,6 @@
 				9AEA4E4613965FA200C5BE43 /* WantedViewController.m in Sources */,
 				9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */,
 				9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */,
-				9AF1BE791398C9DD005E7365 /* RegisterView.m in Sources */,
 				9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */,
 				9AE2FEAD1399209E002D5E97 /* NewMessageView.m in Sources */,
 			);

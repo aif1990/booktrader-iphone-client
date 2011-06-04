@@ -11,7 +11,6 @@
 #import "BookDetailViewController.h"
 #import "NavigationController.h"
 #import "booksAppDelegate.h"
-#import "RegisterView.h"
 
 @implementation HomeViewController
 
@@ -74,12 +73,7 @@
 
 - (void)openRegisterView {
     
-    /*RegisterView *settingDetail = [[RegisterView alloc] initWithNibName:@"RegisterView" bundle:nil];
-    [self presentModalViewController:settingDetail animated:YES];
-    [settingDetail release];*/
-    
    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://abstractbinary.org:6543/users/register"]];
-    
     
 }
 
@@ -128,8 +122,10 @@
 - (void)viewDidAppear:(BOOL)animated 
 {
 
-    if (loginView !=NULL && loginView.username != NULL) 
-        welcomeMessage.text = loginView.username;
+    if (loginView !=NULL && loginView.username != NULL)  {
+        NSString *user = [@"Welcome, " stringByAppendingString:loginView.username];
+        welcomeMessage.text = [user stringByAppendingString:@"!"];
+    }
     
      //return YES;
     

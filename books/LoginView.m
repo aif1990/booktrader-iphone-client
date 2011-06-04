@@ -136,6 +136,7 @@
             if ([[cookie name] isEqualToString:@"auth_tkt"]) 
                 logged_in = true;
                 username = myusername.text;
+                //username =[@"Welcome, " stringByAppendingString:username];
         }
         
         if (!logged_in) {
