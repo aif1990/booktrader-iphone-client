@@ -74,9 +74,12 @@
 
 - (void)openRegisterView {
     
-    RegisterView *settingDetail = [[RegisterView alloc] initWithNibName:@"RegisterView" bundle:nil];
+    /*RegisterView *settingDetail = [[RegisterView alloc] initWithNibName:@"RegisterView" bundle:nil];
     [self presentModalViewController:settingDetail animated:YES];
-    [settingDetail release];
+    [settingDetail release];*/
+    
+   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://abstractbinary.org:6543/users/register"]];
+    
     
 }
 
