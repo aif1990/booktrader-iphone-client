@@ -11,6 +11,8 @@
 #import "WantedViewController.h"
 #import "NavigationController.h"
 #import "NewMessageView.h"
+#import "SearchViewController.h"
+#import "Product.h"
 
 @implementation booksAppDelegate
 
@@ -38,6 +40,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+	
+	// Configure and display the window.
+	//[window addSubview:navController.view];
+	    
     // Override point for customization after app launch    
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];

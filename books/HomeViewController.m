@@ -127,8 +127,6 @@
         welcomeMessage.text = [user stringByAppendingString:@"!"];
     }
     
-     //return YES;
-    
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
