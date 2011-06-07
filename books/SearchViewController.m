@@ -57,6 +57,14 @@
 	self.filteredListContent = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    self.searchDisplayController.searchBar.scopeButtonTitles = nil;
+    self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All",@"Device",@"Desktop",@"Portable", nil];
+    self.searchDisplayController.searchBar.showsScopeBar = YES;
+    
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     // save the state of the search UI so that it can be restored if the view is re-created
