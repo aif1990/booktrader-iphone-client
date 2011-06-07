@@ -13,19 +13,24 @@
 @class WantedViewController;
 @class NavigationController;
 @class NewMessageView;
+@class SearchViewController;
 
 @interface booksAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
     
 	UIWindow *window;
     UITabBarController *tabBarController;
     IBOutlet NavigationController *navigationController;
+    NSArray *listContent;
+    IBOutlet SearchViewController *searchViewController;
     
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
+@property (nonatomic, retain) NSArray *listContent;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet NavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet SearchViewController *searchViewController;
 
 - (IBAction)openNewMessageView;
 

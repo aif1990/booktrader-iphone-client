@@ -8,10 +8,14 @@
 
 #import "SearchViewController.h"
 #import "Product.h"
+#import "booksAppDelegate.h"
+#import "NavigationController.h"
+
 
 @implementation SearchViewController
 
 @synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive;
+@synthesize TableView;
 
 
 #pragma mark - 
@@ -20,8 +24,17 @@
 - (void)viewDidLoad
 {
     
-	self.title = @"Products";
+	self.title = @"Search";
+    
+    NSLog(@"Am incarcat view");
+    
+    //booksAppDelegate *delegate = (booksAppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    if(self.listContent != NULL)
+        NSLog(@"list cnt size%d\n", [self.listContent count]);
+    
 	
+    
 	// create a filtered list that will contain products for the search results table.
 	self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
 	
@@ -35,8 +48,8 @@
         self.savedSearchTerm = nil;
     }
 	
-	[self.tableView reloadData];
-	self.tableView.scrollEnabled = YES;
+	[self.TableView reloadData];
+	self.TableView.scrollEnabled = YES;
 }
 
 - (void)viewDidUnload
@@ -147,10 +160,13 @@
 	/*
 	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
 	 */
-	for (Product *product in listContent)
+	for (Product *product in self.listContent)
 	{
+        NSLog(@"%@ %@\n",searchText, scope);
+        
 		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
 		{
+            NSLog(@"size %d", [self.listContent count]);
 			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
             if (result == NSOrderedSame)
 			{

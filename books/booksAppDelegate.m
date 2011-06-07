@@ -13,12 +13,16 @@
 #import "NewMessageView.h"
 #import "SearchViewController.h"
 #import "Product.h"
+#import "SearchViewController.h"
 
 @implementation booksAppDelegate
 
 @synthesize window;
 @synthesize tabBarController;
 @synthesize navigationController;
+@synthesize searchViewController;
+
+@synthesize listContent;
 
 
 
@@ -40,11 +44,30 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-	
-	// Configure and display the window.
-	//[window addSubview:navController.view];
+    
+    listContent = [[NSArray alloc] initWithObjects:
+                            [Product productWithType:@"Device" name:@"iPhone"],
+                            [Product productWithType:@"Device" name:@"iPod"],
+                            [Product productWithType:@"Device" name:@"iPod touch"],
+                            [Product productWithType:@"Desktop" name:@"iMac"],
+                            [Product productWithType:@"Desktop" name:@"Mac Pro"],
+                            [Product productWithType:@"Portable" name:@"iBook"],
+                            [Product productWithType:@"Portable" name:@"MacBook"],
+                            [Product productWithType:@"Portable" name:@"MacBook Pro"],
+                            [Product productWithType:@"Portable" name:@"PowerBook"], nil];
+    
+    //SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchView" bundle:nil];
+    
+    
+	searchViewController.listContent = listContent;
+    
+    //searchViewController.title = @"Products";
+	//[listContent release];
+    
+    NSLog(@"Am setat array %d", [searchViewController.listContent count]);
 	    
     // Override point for customization after app launch    
+    
     [window addSubview:tabBarController.view];
     [window makeKeyAndVisible];
 	

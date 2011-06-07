@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SearchViewController : UITableViewController <UISearchDisplayDelegate, UISearchBarDelegate>
+@interface SearchViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDelegate>
 {
 	NSArray			*listContent;			// The master content.
 	NSMutableArray	*filteredListContent;	// The content filtered as a result of a search.
-	
+	IBOutlet UITableView *TableView;
+    
 	// The saved state of the search UI if a memory warning removed the view.
     NSString		*savedSearchTerm;
     NSInteger		savedScopeButtonIndex;
@@ -22,6 +23,7 @@
 
 @property (nonatomic, retain) NSArray *listContent;
 @property (nonatomic, retain) NSMutableArray *filteredListContent;
+@property (nonatomic, retain) UITableView *TableView;
 
 @property (nonatomic, copy) NSString *savedSearchTerm;
 @property (nonatomic) NSInteger savedScopeButtonIndex;
