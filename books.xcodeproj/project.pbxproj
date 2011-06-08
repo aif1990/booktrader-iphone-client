@@ -16,8 +16,8 @@
 		9A140111139B9F7600BAB51E /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A140106139B9F7600BAB51E /* SBJsonStreamWriterState.m */; };
 		9A140112139B9F7600BAB51E /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A140108139B9F7600BAB51E /* SBJsonTokeniser.m */; };
 		9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14010A139B9F7600BAB51E /* SBJsonWriter.m */; };
-		9A241B7E139FF67700AFF2A2 /* NewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B7C139FF67700AFF2A2 /* NewData.m */; };
-		9A241B7F139FF67700AFF2A2 /* NewData.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B7D139FF67700AFF2A2 /* NewData.xib */; };
+		9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B8313A00F0600AFF2A2 /* NewDataController.m */; };
+		9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B8413A00F0600AFF2A2 /* NewDataController.xib */; };
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
@@ -83,9 +83,9 @@
 		9A140108139B9F7600BAB51E /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
 		9A140109139B9F7600BAB51E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		9A14010A139B9F7600BAB51E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		9A241B7B139FF67700AFF2A2 /* NewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewData.h; path = ../NewData.h; sourceTree = "<group>"; };
-		9A241B7C139FF67700AFF2A2 /* NewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewData.m; path = ../NewData.m; sourceTree = "<group>"; };
-		9A241B7D139FF67700AFF2A2 /* NewData.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewData.xib; path = ../NewData.xib; sourceTree = "<group>"; };
+		9A241B8213A00F0500AFF2A2 /* NewDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDataController.h; sourceTree = "<group>"; };
+		9A241B8313A00F0600AFF2A2 /* NewDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDataController.m; sourceTree = "<group>"; };
+		9A241B8413A00F0600AFF2A2 /* NewDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDataController.xib; sourceTree = "<group>"; };
 		9AB0EFC91396E0FE00A8A687 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -224,9 +224,6 @@
 				9A1400F6139B9F5400BAB51E /* JSON */,
 				9ACAACE9139D46AD00056534 /* Product.h */,
 				9ACAACEA139D46AD00056534 /* Product.m */,
-				9A241B7B139FF67700AFF2A2 /* NewData.h */,
-				9A241B7C139FF67700AFF2A2 /* NewData.m */,
-				9A241B7D139FF67700AFF2A2 /* NewData.xib */,
 				9AB0EFC91396E0FE00A8A687 /* NavigationController.h */,
 				9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */,
 				9AEA4E3B13965BC200C5BE43 /* BookDetailViewController.h */,
@@ -259,6 +256,9 @@
 				9AE2FEAA1399209E002D5E97 /* NewMessageView.h */,
 				9AE2FEAB1399209E002D5E97 /* NewMessageView.m */,
 				9AE2FEAC1399209E002D5E97 /* NewMessageView.xib */,
+				9A241B8213A00F0500AFF2A2 /* NewDataController.h */,
+				9A241B8313A00F0600AFF2A2 /* NewDataController.m */,
+				9A241B8413A00F0600AFF2A2 /* NewDataController.xib */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -374,7 +374,7 @@
 				9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */,
 				9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */,
 				9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */,
-				9A241B7F139FF67700AFF2A2 /* NewData.xib in Resources */,
+				9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,7 +432,7 @@
 				9A140112139B9F7600BAB51E /* SBJsonTokeniser.m in Sources */,
 				9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */,
 				9ACAACEB139D46AD00056534 /* Product.m in Sources */,
-				9A241B7E139FF67700AFF2A2 /* NewData.m in Sources */,
+				9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

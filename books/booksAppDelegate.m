@@ -13,7 +13,6 @@
 #import "NewMessageView.h"
 #import "SearchViewController.h"
 #import "Product.h"
-#import "SearchViewController.h"
 #import "JSON.h"
 
 @implementation booksAppDelegate

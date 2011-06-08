@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class BookDetailViewController;
+@class Product;
 
 @interface SearchViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDelegate>
 {
@@ -16,6 +17,7 @@
     NSArray         *jsonArray;
 	NSMutableArray	*filteredListContent;	// The content filtered as a result of a search.
 	IBOutlet UITableView *TableView;
+    Product *product;
 
     
 	// The saved state of the search UI if a memory warning removed the view.
@@ -31,7 +33,7 @@
 @property (nonatomic, retain) NSMutableArray *filteredListContent;
 @property (nonatomic, retain) UITableView *TableView;
 
-
+@property (nonatomic, retain) Product *product;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 
 @property (nonatomic, copy) NSString *savedSearchTerm;

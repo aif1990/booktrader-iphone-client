@@ -12,12 +12,12 @@
 #import "NavigationController.h"
 #import "JSON.h"
 #import "BookDetailViewController.h"
-#import "NewData.h"
+#import "NewDataController.h"
 
 
 @implementation SearchViewController
 
-@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive, jsonArray;
+@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive, jsonArray, product;
 @synthesize TableView, bookDetailViewController;
 
 
@@ -83,6 +83,7 @@
 {
 	[listContent release];
 	[filteredListContent release];
+    //[product release];
 	
 	[super dealloc];
 }
@@ -124,7 +125,7 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the cell using the filtered content, otherwise use the main list.
 	 */
-	Product *product = nil;
+	product = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         product = [self.filteredListContent objectAtIndex:indexPath.row];
@@ -149,7 +150,7 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
 	 */
-	Product *product = nil;
+	product = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         product = [self.filteredListContent objectAtIndex:indexPath.row];
@@ -161,20 +162,27 @@
     
 	//detailsViewController.title = product.title;
     
-    BookDetailViewController *settingDetail = [[NewData alloc] initWithNibName:@"NewData" bundle:nil];
+   // BookDetailViewController *settingDetail = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
     
-    self.bookDetailViewController = settingDetail;
+    NewDataController *settings = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
+    
+    //self.bookDetailViewController = settingDetail;
+    
+    settings.searchViewController = self;
     
     NSLog(@"%@\n", product.title);
     
-    self.bookDetailViewController.title = product.title;
+    //self.bookDetailViewController.title = product.title;
+    
+    settings.title = product.title;
+    
+   // [[self navigationController] pushViewController:bookDetailViewController animated:YES];
+    
+    [[self navigationController] pushViewController:settings animated:YES];
+    [settings release];
     
     
-    [[self navigationController] pushViewController:bookDetailViewController animated:YES];
-    
-    
-    
-    [bookDetailViewController release];
+    //[bookDetailViewController release];
     
     //[[self navigationController] pushViewController:detailsViewController animated:YES];
     //[detailsViewController release];
@@ -238,8 +246,9 @@
 	
 	/*
 	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
+     
 	 */
-	for (Product *product in self.listContent)
+	for (product in self.listContent)
 	{
         //NSLog(@"%@ %@\n",searchText, scope);
         
