@@ -50,22 +50,24 @@
 
 @implementation Product
 
-@synthesize type, name;
+@synthesize title, author, publisher;
 
 
-+ (id)productWithType:(NSString *)type name:(NSString *)name
++ (id)productWithType:(NSString *)title author:(NSArray *)author publisher:(NSString *)publisher
 {
 	Product *newProduct = [[[self alloc] init] autorelease];
-	newProduct.type = type;
-	newProduct.name = name;
+	newProduct.title = title;
+	newProduct.author = author;
+    newProduct.publisher = publisher;
 	return newProduct;
 }
 
 
 - (void)dealloc
 {
-	[type release];
-	[name release];
+	[title release];
+	[author release];
+    [publisher release];
 	[super dealloc];
 }
 

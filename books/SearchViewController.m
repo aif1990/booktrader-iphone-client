@@ -64,7 +64,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     self.searchDisplayController.searchBar.scopeButtonTitles = nil;
-    self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All",@"Title",@"Author",@"Publisher", nil];
+    self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Title",@"Author",@"Publisher", nil];
     self.searchDisplayController.searchBar.showsScopeBar = YES;
     
 }
@@ -132,7 +132,7 @@
      product = [self.listContent objectAtIndex:indexPath.row];
      }
 	*/
-	cell.textLabel.text = product.name;
+	cell.textLabel.text = product.title;
     
     
     //cell.textLabel.text = (NSString *)[self.jsonArray objectAtIndex:indexPath.row];
@@ -156,7 +156,7 @@
      {
      product = [self.listContent objectAtIndex:indexPath.row];
      }*/
-	detailsViewController.title = product.name;
+	detailsViewController.title = product.title;
     
     [[self navigationController] pushViewController:detailsViewController animated:YES];
     [detailsViewController release];
@@ -171,7 +171,14 @@
 	/*
 	 Update the filtered array based on the search text and scope.
 	 */
-    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
+    //NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
+    
+    NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
+    NSString *second = [first stringByAppendingString:searchText];
+    NSString *nurl = [second stringByAppendingString:@"&Search=Search&format=json"];
+    
+    NSURL *url = [NSURL URLWithString:nurl];
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
     NSURLResponse *response = NULL;
@@ -183,7 +190,7 @@
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
     
-    NSString *total_items = (NSString *) [data objectForKey:@"total_items"];
+    //NSString *total_items = (NSString *) [data objectForKey:@"total_items"];
     
     /* NSString *jsonData = [[NSString alloc] initWithContentsOfURL:url];
      
@@ -191,7 +198,7 @@
      
      NSLog(@"%@", jsonArray);*/
     
-    //NSLog(@"total items= %@\n", responseString);
+    NSLog(@"total items= %@\n", responseString);
     
 	NSArray* result = [data objectForKey:@"result"];
 	NSEnumerator *enumerator = [result objectEnumerator];
@@ -201,9 +208,11 @@
 	} */
     //[self.listContent removeAllObjects];
     
+    
+    
     while (item = (NSDictionary*)[enumerator nextObject]) {
-        [self.listContent addObject:[Product productWithType:[item objectForKey:@"publisher"] name:[item objectForKey:@"title"]]] ;
-        NSLog(@"result:title = %@", [item objectForKey:@"title"]);
+        [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"]]];
+        //NSLog(@"result:title = %@", [item objectForKey:@"title"]);
 
     }
     
@@ -216,15 +225,41 @@
 	{
         //NSLog(@"%@ %@\n",searchText, scope);
         
-		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
-		{
+		if ([scope isEqualToString:@"Title"] || [product.title isEqualToString:scope])		{
            // NSLog(@"size %d", [self.listContent count]);
-			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+			NSComparisonResult result = [product.title compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
             if (result == NSOrderedSame)
 			{
 				[self.filteredListContent addObject:product];
             }
 		}
+        
+        if ([scope isEqualToString:@"Author"]) {
+            
+            NSEnumerator *enums = [product.author objectEnumerator];
+            
+            NSString* author;
+            
+            while (author = (NSString*)[enums nextObject]) {
+                NSComparisonResult result = [author compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+                    if (result == NSOrderedSame)
+                    {
+                        [self.filteredListContent addObject:product];
+                    }
+                }
+            
+        }
+        
+        if ([scope isEqualToString:@"Publisher"] || [product.publisher isEqualToString:scope]) {
+            
+            NSComparisonResult result = [product.publisher compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+            if (result == NSOrderedSame)
+			{
+				[self.filteredListContent addObject:product];
+            }
+
+            
+        }
 	}
 }
 

@@ -78,7 +78,8 @@
 		NSLog(@"result:title = %@", [item objectForKey:@"title"]);
 	}   */ 
     
-    listContent = [[NSArray alloc] initWithObjects:
+    //decomment here for the global listContent
+   /* listContent = [[NSArray alloc] initWithObjects:
                             [Product productWithType:@"Device" name:@"iPhone"],
                             [Product productWithType:@"Device" name:@"iPod"],
                             [Product productWithType:@"Device" name:@"iPod touch"],
@@ -87,17 +88,18 @@
                             [Product productWithType:@"Portable" name:@"iBook"],
                             [Product productWithType:@"Portable" name:@"MacBook"],
                             [Product productWithType:@"Portable" name:@"MacBook Pro"],
-                            [Product productWithType:@"Portable" name:@"PowerBook"], nil];
-    
+                            [Product productWithType:@"Portable" name:@"PowerBook"], nil];*/
+    //and here
     //SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:@"SearchView" bundle:nil];
     
-    
-	searchViewController.listContent = listContent;
+    //and here
+	//searchViewController.listContent = listContent;
     
     //searchViewController.title = @"Products";
 	//[listContent release];
     
-    NSLog(@"Am setat array %d", [searchViewController.listContent count]);
+    //and here
+   // NSLog(@"Am setat array %d", [searchViewController.listContent count]);
 	    
     // Override point for customization after app launch    
     

@@ -46,12 +46,14 @@
  */
 
 @interface Product : NSObject {
-	NSString *type;
-	NSString *name;
+	NSString *title;
+	NSArray *author;
+    NSString *publisher;
 }
 
-@property (nonatomic, copy) NSString *type, *name;
+@property (nonatomic, copy) NSString *title, *publisher;
+@property (nonatomic, copy) NSArray *author;
 
-+ (id)productWithType:(NSString *)type name:(NSString *)name;
++ (id)productWithType:(NSString *)title author:(NSArray *)author publisher:(NSString *)publisher;
 
 @end

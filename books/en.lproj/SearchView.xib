@@ -76,7 +76,6 @@
 						</object>
 						<object class="NSArray" key="IBScopeButtonTitles">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>All</string>
 							<string>Title</string>
 							<string>Author</string>
 							<string>Publisher</string>
