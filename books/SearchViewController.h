@@ -11,7 +11,8 @@
 
 @interface SearchViewController : UIViewController <UISearchDisplayDelegate, UISearchBarDelegate, UITableViewDelegate>
 {
-	NSArray			*listContent;			// The master content.
+	NSMutableArray			*listContent;			// The master content.
+    NSArray         *jsonArray;
 	NSMutableArray	*filteredListContent;	// The content filtered as a result of a search.
 	IBOutlet UITableView *TableView;
     
@@ -21,7 +22,8 @@
     BOOL			searchWasActive;
 }
 
-@property (nonatomic, retain) NSArray *listContent;
+@property (nonatomic, retain) NSMutableArray *listContent;
+@property (nonatomic, retain) NSArray *jsonArray;
 @property (nonatomic, retain) NSMutableArray *filteredListContent;
 @property (nonatomic, retain) UITableView *TableView;
 

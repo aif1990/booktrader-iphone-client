@@ -180,12 +180,12 @@
 				9A14010A139B9F7600BAB51E /* SBJsonWriter.m */,
 			);
 			name = JSON;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9AEA4DE113964F1700C5BE43 = {
 			isa = PBXGroup;
 			children = (
-				9A1400F6139B9F5400BAB51E /* JSON */,
 				9AEA4DF613964F1700C5BE43 /* books */,
 				9AEA4E1C13964F1700C5BE43 /* booksTests */,
 				9AEA4DEF13964F1700C5BE43 /* Frameworks */,
@@ -216,6 +216,7 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9A1400F6139B9F5400BAB51E /* JSON */,
 				9ACAACE9139D46AD00056534 /* Product.h */,
 				9ACAACEA139D46AD00056534 /* Product.m */,
 				9AB0EFC91396E0FE00A8A687 /* NavigationController.h */,

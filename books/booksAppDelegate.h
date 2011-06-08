@@ -20,14 +20,16 @@
 	UIWindow *window;
     UITabBarController *tabBarController;
     IBOutlet NavigationController *navigationController;
-    NSArray *listContent;
+    NSMutableArray *listContent;
     IBOutlet SearchViewController *searchViewController;
+    NSArray *jsonArray;
     
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) NSArray *listContent;
+@property (nonatomic, retain) NSMutableArray *listContent;
+@property (nonatomic, retain) NSArray *jsonArray;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) IBOutlet NavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet SearchViewController *searchViewController;

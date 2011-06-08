@@ -10,11 +10,12 @@
 #import "Product.h"
 #import "booksAppDelegate.h"
 #import "NavigationController.h"
+#import "JSON.h"
 
 
 @implementation SearchViewController
 
-@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive;
+@synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive, jsonArray;
 @synthesize TableView;
 
 
@@ -36,7 +37,10 @@
 	
     
 	// create a filtered list that will contain products for the search results table.
+    self.listContent = [NSMutableArray arrayWithCapacity:100];
 	self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
+    
+    //self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.jsonArray count]];
 	
 	// restore search settings if they were saved in didReceiveMemoryWarning.
     if (self.savedSearchTerm)
@@ -60,7 +64,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     self.searchDisplayController.searchBar.scopeButtonTitles = nil;
-    self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All",@"Device",@"Desktop",@"Portable", nil];
+    self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"All",@"Title",@"Author",@"Publisher", nil];
     self.searchDisplayController.searchBar.showsScopeBar = YES;
     
 }
@@ -99,6 +103,8 @@
      {
      return [self.listContent count];
      }*/
+    
+    //return [jsonArray count];
 }
 
 
@@ -124,9 +130,12 @@
 	/*else
      {
      product = [self.listContent objectAtIndex:indexPath.row];
-     }*/
-	
+     }
+	*/
 	cell.textLabel.text = product.name;
+    
+    
+    //cell.textLabel.text = (NSString *)[self.jsonArray objectAtIndex:indexPath.row];
 	return cell;
 }
 
@@ -162,7 +171,42 @@
 	/*
 	 Update the filtered array based on the search text and scope.
 	 */
-	
+    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    NSString *total_items = (NSString *) [data objectForKey:@"total_items"];
+    
+    /* NSString *jsonData = [[NSString alloc] initWithContentsOfURL:url];
+     
+     jsonArray = [jsonData JSONValue];
+     
+     NSLog(@"%@", jsonArray);*/
+    
+    //NSLog(@"total items= %@\n", responseString);
+    
+	NSArray* result = [data objectForKey:@"result"];
+	NSEnumerator *enumerator = [result objectEnumerator];
+	NSDictionary* item;
+	/*while (item = (NSDictionary*)[enumerator nextObject]) {
+		NSLog(@"result:title = %@", [item objectForKey:@"title"]);
+	} */
+    //[self.listContent removeAllObjects];
+    
+    while (item = (NSDictionary*)[enumerator nextObject]) {
+        [self.listContent addObject:[Product productWithType:[item objectForKey:@"publisher"] name:[item objectForKey:@"title"]]] ;
+        NSLog(@"result:title = %@", [item objectForKey:@"title"]);
+
+    }
+    
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
 	
 	/*
@@ -170,11 +214,11 @@
 	 */
 	for (Product *product in self.listContent)
 	{
-        NSLog(@"%@ %@\n",searchText, scope);
+        //NSLog(@"%@ %@\n",searchText, scope);
         
 		if ([scope isEqualToString:@"All"] || [product.type isEqualToString:scope])
 		{
-            NSLog(@"size %d", [self.listContent count]);
+           // NSLog(@"size %d", [self.listContent count]);
 			NSComparisonResult result = [product.name compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
             if (result == NSOrderedSame)
 			{

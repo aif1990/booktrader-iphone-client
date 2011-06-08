@@ -14,6 +14,7 @@
 #import "SearchViewController.h"
 #import "Product.h"
 #import "SearchViewController.h"
+#import "JSON.h"
 
 @implementation booksAppDelegate
 
@@ -23,6 +24,7 @@
 @synthesize searchViewController;
 
 @synthesize listContent;
+@synthesize jsonArray;
 
 
 
@@ -44,6 +46,37 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
+    
+    
+    /*NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    NSString *total_items = (NSString *) [data objectForKey:@"total_items"];
+    
+   /* NSString *jsonData = [[NSString alloc] initWithContentsOfURL:url];
+    
+    jsonArray = [jsonData JSONValue];
+    
+    NSLog(@"%@", jsonArray);*/
+    
+  /*  NSLog(@"total items= %@\n", responseString);
+    
+    
+	NSArray* result = [data objectForKey:@"result"];
+	NSEnumerator *enumerator = [result objectEnumerator];
+	NSDictionary* item;
+	while (item = (NSDictionary*)[enumerator nextObject]) {
+		NSLog(@"result:title = %@", [item objectForKey:@"title"]);
+	}   */ 
     
     listContent = [[NSArray alloc] initWithObjects:
                             [Product productWithType:@"Device" name:@"iPhone"],
