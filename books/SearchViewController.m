@@ -11,12 +11,14 @@
 #import "booksAppDelegate.h"
 #import "NavigationController.h"
 #import "JSON.h"
+#import "BookDetailViewController.h"
+#import "NewData.h"
 
 
 @implementation SearchViewController
 
 @synthesize listContent, filteredListContent, savedSearchTerm, savedScopeButtonIndex, searchWasActive, jsonArray;
-@synthesize TableView;
+@synthesize TableView, bookDetailViewController;
 
 
 #pragma mark - 
@@ -142,7 +144,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *detailsViewController = [[UIViewController alloc] init];
+    //UIViewController *detailsViewController = [[UIViewController alloc] init];
     
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
@@ -156,10 +158,26 @@
      {
      product = [self.listContent objectAtIndex:indexPath.row];
      }*/
-	detailsViewController.title = product.title;
     
-    [[self navigationController] pushViewController:detailsViewController animated:YES];
-    [detailsViewController release];
+	//detailsViewController.title = product.title;
+    
+    BookDetailViewController *settingDetail = [[NewData alloc] initWithNibName:@"NewData" bundle:nil];
+    
+    self.bookDetailViewController = settingDetail;
+    
+    NSLog(@"%@\n", product.title);
+    
+    self.bookDetailViewController.title = product.title;
+    
+    
+    [[self navigationController] pushViewController:bookDetailViewController animated:YES];
+    
+    
+    
+    [bookDetailViewController release];
+    
+    //[[self navigationController] pushViewController:detailsViewController animated:YES];
+    //[detailsViewController release];
 }
 
 
