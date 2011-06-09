@@ -16,7 +16,7 @@
 
 @implementation NewDataController
 
-@synthesize bookTitle, searchViewController;
+@synthesize bookTitle, searchViewController, bookAuthor, imageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +49,48 @@
     
     bookTitle.text = searchViewController.product.title;
     
-    //bookTitle.text = @"Ana are mere";
+    NSEnumerator *enums = [searchViewController.product.author objectEnumerator];
+    
+    NSString* author;
+    
+    NSString *bookAuthors = @"***";
+    
+    while (author = (NSString*)[enums nextObject]) {
+        
+        bookAuthors = [bookAuthors stringByAppendingString:author];
+        bookAuthors = [bookAuthors stringByAppendingString:@"***"];
+    }
+    
+   // NSMutableURLRequest *imgurl = [[NSURL alloc] URLWithString:searchViewController.product.url];
+    
+   // NSURL *imurl = [[NSURL alloc] initWithString:searchViewController.product.url];
+    
+    //if(searchViewController.product.url != NULL)
+        //imageView = [UIImage imageWithData: [NSData dataWithContentsOfURL:searchViewController.product.url]];
+    
+   //imageView = [UIImage imageWithData: [NSData dataWithContentsOfURL:imurl]];
+       
+    NSURL *url = [NSURL URLWithString:searchViewController.product.url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
+    [request setHTTPMethod:@"POST"];
+   
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    //NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    UIImage *image = [UIImage imageWithData:responseData];
+    [imageView setImage:image];
+    
+    
+    bookAuthor.text = bookAuthors;
+    bookPublisher.text = searchViewController.product.publisher;
+    
+    
+    
+    
+   // bookAuthor.text = searchViewController.product.author;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.

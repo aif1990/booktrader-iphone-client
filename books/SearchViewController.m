@@ -31,12 +31,6 @@
     
     NSLog(@"Am incarcat view");
     
-    //booksAppDelegate *delegate = (booksAppDelegate*)[[UIApplication sharedApplication] delegate];
-    
-    if(self.listContent != NULL)
-        NSLog(@"list cnt size%d\n", [self.listContent count]);
-    
-	
     
 	// create a filtered list that will contain products for the search results table.
     self.listContent = [NSMutableArray arrayWithCapacity:100];
@@ -45,14 +39,14 @@
     //self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.jsonArray count]];
 	
 	// restore search settings if they were saved in didReceiveMemoryWarning.
-    if (self.savedSearchTerm)
+    /*if (self.savedSearchTerm)
 	{
         [self.searchDisplayController setActive:self.searchWasActive];
         [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
         [self.searchDisplayController.searchBar setText:savedSearchTerm];
         
         self.savedSearchTerm = nil;
-    }
+    }*/
 	
 	[self.TableView reloadData];
 	self.TableView.scrollEnabled = YES;
@@ -74,9 +68,9 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     // save the state of the search UI so that it can be restored if the view is re-created
-    self.searchWasActive = [self.searchDisplayController isActive];
+   /* self.searchWasActive = [self.searchDisplayController isActive];
     self.savedSearchTerm = [self.searchDisplayController.searchBar text];
-    self.savedScopeButtonIndex = [self.searchDisplayController.searchBar selectedScopeButtonIndex];
+    self.savedScopeButtonIndex = [self.searchDisplayController.searchBar selectedScopeButtonIndex];*/
 }
 
 - (void)dealloc
@@ -192,6 +186,15 @@
 #pragma mark -
 #pragma mark Content Filtering
 
+- (NSString *)urlEncodeValue:(NSString *)str
+{
+    NSString *result = (NSString *) CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (CFStringRef)str, NULL, CFSTR(":/?#[]@!$&’()*+,;=”"), kCFStringEncodingUTF8);
+    
+    return [result autorelease];
+}
+
+
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
 	/*
@@ -200,13 +203,21 @@
     //NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
     
     NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
-    NSString *second = [first stringByAppendingString:searchText];
+    NSString *second = [first stringByAppendingString:[self urlEncodeValue:searchText]];
     NSString *nurl = [second stringByAppendingString:@"&Search=Search&format=json"];
     
     NSURL *url = [NSURL URLWithString:nurl];
+
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
+    
+   /* NSString *text = [NSString stringWithFormat:@"title=%@&publisher=%@&authors=%@&thumbnail=%@&Search=Search&format=json", [self urlEncodeValue:searchText]];
+    
+    NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:requestBody];*/
+    
+    
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
@@ -234,11 +245,11 @@
 	} */
     //[self.listContent removeAllObjects];
     
-    
+    [self.listContent removeAllObjects];
     
     while (item = (NSDictionary*)[enumerator nextObject]) {
-        [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"]]];
-        //NSLog(@"result:title = %@", [item objectForKey:@"title"]);
+        [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"]]];
+       // NSLog(@"result:title = %@", [item objectForKey:@"smallThumbnail"]);
 
     }
     
@@ -248,20 +259,36 @@
 	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
      
 	 */
+    
+    
+    
 	for (product in self.listContent)
 	{
         //NSLog(@"%@ %@\n",searchText, scope);
         
+        
 		if ([scope isEqualToString:@"Title"] || [product.title isEqualToString:scope])		{
+            
+                       
            // NSLog(@"size %d", [self.listContent count]);
-			NSComparisonResult result = [product.title compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            if (result == NSOrderedSame)
+			//NSComparisonResult result = [product.title compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
+            //if (result == NSOrderedSame)
+            
+            //if ([product.title containsSubstring:searchText])
+            
+            if([product.title rangeOfString:searchText].location != 0)
 			{
 				[self.filteredListContent addObject:product];
             }
+            else { 
+                NSLog(@"am respins %@| :\n", product.title);
+                //NSLog(@"%@ \n|", result);
+            }
+            
 		}
         
         if ([scope isEqualToString:@"Author"]) {
+            
             
             NSEnumerator *enums = [product.author objectEnumerator];
             
@@ -270,17 +297,25 @@
             while (author = (NSString*)[enums nextObject]) {
                 NSComparisonResult result = [author compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
                     if (result == NSOrderedSame)
+                //if ([author containsSubstring:searchText])
+                //if ([author rangeOfString:searchText].location != 0)
                     {
                         [self.filteredListContent addObject:product];
                     }
                 }
+                
+            
             
         }
         
         if ([scope isEqualToString:@"Publisher"] || [product.publisher isEqualToString:scope]) {
             
+            //if ([product.publisher rangeOfString:searchText].location != 0)
+            
             NSComparisonResult result = [product.publisher compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
             if (result == NSOrderedSame)
+            
+            //if([product.publisher containsSubstring:searchText])
 			{
 				[self.filteredListContent addObject:product];
             }
@@ -288,6 +323,7 @@
             
         }
 	}
+    
 }
 
 
@@ -299,6 +335,7 @@
     [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     
+        
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
@@ -309,6 +346,7 @@
     [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     
+        
     // Return YES to cause the search result table view to be reloaded.
     return YES;
 }

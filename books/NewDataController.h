@@ -12,13 +12,15 @@
 
 @interface NewDataController : UIViewController {
     
-    IBOutlet UILabel *bookTitle;
+    IBOutlet UILabel *bookTitle, *bookAuthor, *bookPublisher;
+    IBOutlet UIImageView *imageView;
     
     SearchViewController *searchViewController;
     
 }
 
-@property (nonatomic, retain) UILabel *bookTitle;
+@property (nonatomic, retain) UILabel *bookTitle, *bookAuthor, *bookPublisher;
+@property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) SearchViewController *searchViewController;
 
 @end

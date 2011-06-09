@@ -49,11 +49,13 @@
 	NSString *title;
 	NSArray *author;
     NSString *publisher;
+    NSString *url;
 }
 
 @property (nonatomic, copy) NSString *title, *publisher;
 @property (nonatomic, copy) NSArray *author;
+@property (nonatomic, copy) NSString *url;
 
-+ (id)productWithType:(NSString *)title author:(NSArray *)author publisher:(NSString *)publisher;
++ (id)productWithType:(NSString *)title author:(NSArray *)author publisher:(NSString *)publisher url:(NSString*)url;
 
 @end
