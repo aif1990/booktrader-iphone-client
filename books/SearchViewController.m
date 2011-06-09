@@ -194,9 +194,9 @@
 }
 
 
-
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
+    
 	/*
 	 Update the filtered array based on the search text and scope.
 	 */
@@ -276,9 +276,11 @@
             
             //if ([product.title containsSubstring:searchText])
             
-            if([product.title rangeOfString:searchText].location != 0)
+            if([product.title rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
 			{
 				[self.filteredListContent addObject:product];
+                NSLog(@"amacceptat %@ (%d) :\n", product.title,
+                      [product.title rangeOfString:searchText].location);
             }
             else { 
                 NSLog(@"am respins %@| :\n", product.title);
@@ -295,16 +297,11 @@
             NSString* author;
             
             while (author = (NSString*)[enums nextObject]) {
-                NSComparisonResult result = [author compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-                    if (result == NSOrderedSame)
-                //if ([author containsSubstring:searchText])
-                //if ([author rangeOfString:searchText].location != 0)
+                if([author rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
                     {
                         [self.filteredListContent addObject:product];
                     }
                 }
-                
-            
             
         }
         
@@ -312,9 +309,7 @@
             
             //if ([product.publisher rangeOfString:searchText].location != 0)
             
-            NSComparisonResult result = [product.publisher compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            if (result == NSOrderedSame)
-            
+            if([product.publisher rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
             //if([product.publisher containsSubstring:searchText])
 			{
 				[self.filteredListContent addObject:product];
