@@ -85,19 +85,7 @@
     
     self.TableView.scrollEnabled = YES;
     
-	//self.title = NSLocalizedString(@"Collection",@"Collection");
 	
-	/*NSMutableArray *array = [[NSArray alloc] initWithObjects:@"Collection",@"Wanted", nil];
-	self.books = array;
-    //
-    NSLog(@"%@",username);
-    
-    //NSLog(@"%@\n",booksArray);
-    
-	[array release];*/
-        
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 

@@ -142,6 +142,8 @@
         
         settingsDetail.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
         
+        settingsDetail.username = username;
+        
         [self.navigationController pushViewController:settingsDetail animated:YES];
         [settingsDetail release];
 		
