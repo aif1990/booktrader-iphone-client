@@ -13,6 +13,7 @@
 #import "booksAppDelegate.h"
 #import "Product.h"
 #import "CollectionViewController.h"
+#import "JSON.h"
 
 
 @implementation NewDataController
@@ -73,6 +74,28 @@
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        UIAlertView* alertView = nil; 
+        
+        @try {
+        alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+            
+            [alertView show];  
+        } @finally {
+        if (alertView)
+            [alertView release];
+        }
+    }
+
+    
+    
     UIImage *image = [UIImage imageWithData:responseData];
     if (image != NULL) {
         [imageView2 setHidden:YES];
@@ -86,6 +109,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+/*- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    // the user clicked one of the buttons
+    switch (buttonIndex){
+        case 0:
+            // handle a cancel event
+            break;
+        default:
+            //do whatever
+            break;
+    }
+    
+}*/
 
 -(IBAction) segmentedControlIndexChanged{
     switch (self.segmentedControl.selectedSegmentIndex) {
@@ -103,23 +140,43 @@
 -(IBAction)want {
     
     
-    NSString *first1 = @"http://abstractbinary.org:6543/books/";
-    NSString *second1 = [first1 stringByAppendingString:searchViewController.product.identifier];
-    NSString *nurl1 = [second1 stringByAppendingString:@"/want"];
+    NSString *first = @"http://abstractbinary.org:6543/books/";
+    NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
+    NSString *nurl = [second stringByAppendingString:@"/want"];
     
-    NSURL *url1 = [NSURL URLWithString:nurl1];
+    NSURL *url = [NSURL URLWithString:nurl];
     
     
-    NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url1];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    [request1 setTimeoutInterval:5];
-    NSURLResponse *response1 = NULL;
-    NSError *requestError1 = NULL;
-    NSData *responseData1 = [NSURLConnection sendSynchronousRequest:request1 returningResponse:&response1 error:&requestError1];
+    [request setTimeoutInterval:5];
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
-    NSString *responseString1 = [[[NSString alloc] initWithData:responseData1 encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        UIAlertView* alertView = nil; 
+        
+        @try {
+            alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+            
+            [alertView show];  
+        } @finally {
+            if (alertView)
+                [alertView release];
+        }
+    }
 
-    NSLog(@"%@ ", responseString1);
+
+    //NSLog(@"%@ ", responseString);
     
 }
 
@@ -139,6 +196,26 @@
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        UIAlertView* alertView = nil; 
+        
+        @try {
+            alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+            
+            [alertView show];  
+        } @finally {
+            if (alertView)
+                [alertView release];
+        }
+    }
+
 
     NSLog(@"%@ ", responseString);
     

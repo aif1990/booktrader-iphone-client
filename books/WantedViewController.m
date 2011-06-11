@@ -64,7 +64,20 @@
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
     
-    
+    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        UIAlertView* alertView = nil; 
+        
+        @try {
+            alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+            
+            [alertView show];  
+        } @finally {
+            if (alertView)
+                [alertView release];
+        }
+    } else {
+
     
     // NSLog(@"total items= %@\n", responseString);
     
@@ -78,7 +91,7 @@
         [self.list addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]]];
     }
     
-    NSLog(@"%@", self.list);
+        NSLog(@"%@", self.list); }
     
     [self.TableView reloadData];
     

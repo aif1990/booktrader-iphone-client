@@ -111,7 +111,7 @@
     NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:requestBody];
     
-    username = @"Not logged in";
+    username = NULL;
         
     
     NSURLResponse *response = NULL;
@@ -132,21 +132,23 @@
         
         bool logged_in =  false;
     
-        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) {
-            if ([[cookie name] isEqualToString:@"auth_tkt"]) 
+        for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) 
+            if ([[cookie name] isEqualToString:@"auth_tkt"]) {
                 logged_in = true;
                 username = myusername.text;
-                //username =[@"Welcome, " stringByAppendingString:username];
-        }
+                [self dismissModalViewControllerAnimated:YES];
+            }
         
         if (!logged_in) {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong username/password " delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-            username = @"Not logged in";
+            username = NULL;
             [alert show];
             [alert release];
             
         }
+        
+        
         
 	}
     
