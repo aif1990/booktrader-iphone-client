@@ -35,19 +35,7 @@
 	// create a filtered list that will contain products for the search results table.
     self.listContent = [NSMutableArray arrayWithCapacity:100];
 	self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
-    
-    //self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.jsonArray count]];
-	
-	// restore search settings if they were saved in didReceiveMemoryWarning.
-    /*if (self.savedSearchTerm)
-	{
-        [self.searchDisplayController setActive:self.searchWasActive];
-        [self.searchDisplayController.searchBar setSelectedScopeButtonIndex:self.savedScopeButtonIndex];
-        [self.searchDisplayController.searchBar setText:savedSearchTerm];
-        
-        self.savedSearchTerm = nil;
-    }*/
-	
+
 	[self.TableView reloadData];
 	self.TableView.scrollEnabled = YES;
 }
@@ -95,12 +83,7 @@
 	{
         return [self.filteredListContent count];
     }
-	/*else
-     {
-     return [self.listContent count];
-     }*/
-    
-    //return [jsonArray count];
+	
 }
 
 
@@ -123,11 +106,7 @@
 	{
         product = [self.filteredListContent objectAtIndex:indexPath.row];
     }
-	/*else
-     {
-     product = [self.listContent objectAtIndex:indexPath.row];
-     }
-	*/
+	
 	cell.textLabel.text = product.title;
     
     
@@ -153,8 +132,6 @@
     
     
     settings.searchViewController = self;
-    
-   // NSLog(@"%@\n", product.title);
     
     
     settings.title = product.title;
@@ -202,11 +179,7 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
-    
-    
-    
-   // NSLog(@"total items= %@\n", responseString);
-    
+
 	NSArray* result = [data objectForKey:@"result"];
 	NSEnumerator *enumerator = [result objectEnumerator];
 	NSDictionary* item;
@@ -216,7 +189,6 @@
     
     while (item = (NSDictionary*)[enumerator nextObject]) {
         [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]]];
-       // NSLog(@"result:title = %@", [item objectForKey:@"smallThumbnail"]);
 
     }
     
@@ -231,23 +203,16 @@
     
 	for (product in self.listContent)
 	{
-        //NSLog(@"%@ %@\n",searchText, scope);
-        
+            
         
 		if ([scope isEqualToString:@"Title"] || [product.title isEqualToString:scope])		{
             
-                       
-           // NSLog(@"size %d", [self.listContent count]);
-			//NSComparisonResult result = [product.title compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
-            //if (result == NSOrderedSame)
-            
-            //if ([product.title containsSubstring:searchText])
             
             if([product.title rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
 			{
 				[self.filteredListContent addObject:product];
-                NSLog(@"amacceptat %@ (%d) :\n", product.title,
-                      [product.title rangeOfString:searchText].location);
+                //NSLog(@"amacceptat %@ (%d) :\n", product.title,
+                      //[product.title rangeOfString:searchText].location);
             }
             
 		}
@@ -270,7 +235,6 @@
         
         if ([scope isEqualToString:@"Publisher"] || [product.publisher isEqualToString:scope]) {
             
-            //if ([product.publisher rangeOfString:searchText].location != 0)
             
             if([product.publisher rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
             //if([product.publisher containsSubstring:searchText])

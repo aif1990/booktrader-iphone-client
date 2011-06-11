@@ -48,12 +48,6 @@
 
 - (IBAction)backgroundClick:(id)sender {
     
-    /*NSUserDefaults *name = [NSUserDefaults standardUserDefaults];
-	[name setObject:[myusername text] forKey: @"textFieldKey"];
-	
-	NSUserDefaults *passwd = [NSUserDefaults standardUserDefaults];
-	[passwd setObject:[mypassword text] forKey: @"numberFieldKey"];*/
-    
 	[myusername resignFirstResponder];
 	[mypassword resignFirstResponder];
 		
@@ -106,7 +100,7 @@
     [request setValue:myusername.text forHTTPHeaderField:@"username"];
     [request setValue:mypassword.text forHTTPHeaderField:@"password"];
     
-    NSString *text = [NSString stringWithFormat:@"username=%@&password=%@&Login=Login&came_from=%@", [self urlEncodeValue:myusername.text], [self urlEncodeValue:mypassword.text], [self urlEncodeValue:@"/"]];
+    NSString *text = [NSString stringWithFormat:@"username=%@&password=%@&Login=Login&format=json", [self urlEncodeValue:myusername.text], [self urlEncodeValue:mypassword.text]];
     
     NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:requestBody];
@@ -128,7 +122,7 @@
 	}
 	else if (response)
 	{
-		NSLog (@"[DEBUG]: HTTP Response is %@", responseString);
+		//NSLog (@"[DEBUG]: HTTP Response is %@", responseString);
         
         bool logged_in =  false;
     

@@ -64,7 +64,9 @@
         bookAuthors = [bookAuthors stringByAppendingString:@"***"];
     }
     
-       
+    
+    NSLog(@"%@", searchViewController.product.url);
+    
     NSURL *url = [NSURL URLWithString:searchViewController.product.url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
@@ -73,27 +75,6 @@
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
-    
-    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-    
-    SBJsonParser *parser = [[SBJsonParser alloc] init];
-    
-    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
-    
-    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
-        
-        UIAlertView* alertView = nil; 
-        
-        @try {
-        alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
-            
-            [alertView show];  
-        } @finally {
-        if (alertView)
-            [alertView release];
-        }
-    }
-
     
     
     UIImage *image = [UIImage imageWithData:responseData];
@@ -142,7 +123,7 @@
     
     NSString *first = @"http://abstractbinary.org:6543/books/";
     NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
-    NSString *nurl = [second stringByAppendingString:@"/want"];
+    NSString *nurl = [second stringByAppendingString:@"/want?format=json"];
     
     NSURL *url = [NSURL URLWithString:nurl];
     
@@ -162,6 +143,24 @@
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        if ( [(NSString*) [data objectForKey:@"reason"] compare:@"book already wanted"] == NSOrderedSame) {
+        
+            
+            UIAlertView* alertView = nil; 
+            
+            @try {
+                alertView = [[UIAlertView alloc] initWithTitle:@"Book Status" message:@"Book already wanted" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+                
+                [alertView show];  
+            } @finally {
+                if (alertView)
+                    [alertView release];
+            }
+        
+            
+        
+        } else {
         
         UIAlertView* alertView = nil; 
         
@@ -174,6 +173,7 @@
                 [alertView release];
         }
     }
+    }
 
 
     //NSLog(@"%@ ", responseString);
@@ -184,7 +184,7 @@
     
     NSString *first = @"http://abstractbinary.org:6543/books/";
     NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
-    NSString *nurl = [second stringByAppendingString:@"/have"];
+    NSString *nurl = [second stringByAppendingString:@"/have?format=json"];
     
     NSURL *url = [NSURL URLWithString:nurl];
     
@@ -204,6 +204,27 @@
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
         
+        NSLog(@"hjghghjh %@", [data objectForKey:@"status"]);
+        
+        
+        if ( [(NSString*) [data objectForKey:@"reason"] compare:@"book already owned"] == NSOrderedSame) {
+            
+            
+            UIAlertView* alertView = nil; 
+            
+            @try {
+                alertView = [[UIAlertView alloc] initWithTitle:@"Book Status" message:@"Book already owned" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+                
+                [alertView show];  
+            } @finally {
+                if (alertView)
+                    [alertView release];
+            }
+            
+            
+            
+        } else {
+        
         UIAlertView* alertView = nil; 
         
         @try {
@@ -214,6 +235,7 @@
             if (alertView)
                 [alertView release];
         }
+    }
     }
 
 
