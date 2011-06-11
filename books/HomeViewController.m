@@ -81,9 +81,7 @@
     
     NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/logout"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    //NSURLRequest* request = [NSURLRequest requestWithURL: url
-                                          //   cachePolicy: NSURLRequestReloadIgnoringCacheData 
-                                        // timeoutInterval:5.0];
+    
     [request setTimeoutInterval:5];
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;

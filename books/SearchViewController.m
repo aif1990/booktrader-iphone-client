@@ -204,7 +204,7 @@
     
     NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
     NSString *second = [first stringByAppendingString:[self urlEncodeValue:searchText]];
-    NSString *nurl = [second stringByAppendingString:@"&Search=Search&format=json"];
+    NSString *nurl = [second stringByAppendingString:@"&Search=Search&format=json&limit=40"];
     
     NSURL *url = [NSURL URLWithString:nurl];
 
@@ -248,7 +248,7 @@
     [self.listContent removeAllObjects];
     
     while (item = (NSDictionary*)[enumerator nextObject]) {
-        [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"]]];
+        [self.listContent addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]]];
        // NSLog(@"result:title = %@", [item objectForKey:@"smallThumbnail"]);
 
     }

@@ -16,7 +16,7 @@
 
 @implementation NewDataController
 
-@synthesize bookTitle, searchViewController, bookAuthor, imageView;
+@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +29,7 @@
 
 - (void)dealloc
 {
+    [segmentedControl release];
     [super dealloc];
 }
 
@@ -61,14 +62,6 @@
         bookAuthors = [bookAuthors stringByAppendingString:@"***"];
     }
     
-   // NSMutableURLRequest *imgurl = [[NSURL alloc] URLWithString:searchViewController.product.url];
-    
-   // NSURL *imurl = [[NSURL alloc] initWithString:searchViewController.product.url];
-    
-    //if(searchViewController.product.url != NULL)
-        //imageView = [UIImage imageWithData: [NSData dataWithContentsOfURL:searchViewController.product.url]];
-    
-   //imageView = [UIImage imageWithData: [NSData dataWithContentsOfURL:imurl]];
        
     NSURL *url = [NSURL URLWithString:searchViewController.product.url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -78,7 +71,6 @@
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
-    //NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
     UIImage *image = [UIImage imageWithData:responseData];
     [imageView setImage:image];
@@ -88,13 +80,68 @@
     bookPublisher.text = searchViewController.product.publisher;
     
     
-    
-    
-   // bookAuthor.text = searchViewController.product.author;
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
+-(IBAction) segmentedControlIndexChanged{
+    switch (self.segmentedControl.selectedSegmentIndex) {
+        case 0:
+            [self have];
+            break;
+        case 1:
+            [self want];
+            break;
+        default:
+            break;
+    }
+ }
+
+-(IBAction)want {
+    
+    
+    NSString *first1 = @"http://abstractbinary.org:6543/books/";
+    NSString *second1 = [first1 stringByAppendingString:searchViewController.product.identifier];
+    NSString *nurl1 = [second1 stringByAppendingString:@"/want"];
+    
+    NSURL *url1 = [NSURL URLWithString:nurl1];
+    
+    
+    NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url1];
+    
+    [request1 setTimeoutInterval:5];
+    NSURLResponse *response1 = NULL;
+    NSError *requestError1 = NULL;
+    NSData *responseData1 = [NSURLConnection sendSynchronousRequest:request1 returningResponse:&response1 error:&requestError1];
+    
+    NSString *responseString1 = [[[NSString alloc] initWithData:responseData1 encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"%@ ", responseString1);
+    
+}
+
+-(IBAction)have {
+    
+    NSString *first = @"http://abstractbinary.org:6543/books/";
+    NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
+    NSString *nurl = [second stringByAppendingString:@"/have"];
+    
+    NSURL *url = [NSURL URLWithString:nurl];
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    [request setTimeoutInterval:5];
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"%@ ", responseString);
+    
+    
+}
+
 
 - (void)viewDidUnload
 {

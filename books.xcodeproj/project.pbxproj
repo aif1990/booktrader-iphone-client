@@ -18,6 +18,7 @@
 		9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14010A139B9F7600BAB51E /* SBJsonWriter.m */; };
 		9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B8313A00F0600AFF2A2 /* NewDataController.m */; };
 		9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B8413A00F0600AFF2A2 /* NewDataController.xib */; };
+		9A79002913A17069003A9C2A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A79002813A17069003A9C2A /* Entitlements.plist */; };
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
@@ -86,6 +87,7 @@
 		9A241B8213A00F0500AFF2A2 /* NewDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDataController.h; sourceTree = "<group>"; };
 		9A241B8313A00F0600AFF2A2 /* NewDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDataController.m; sourceTree = "<group>"; };
 		9A241B8413A00F0600AFF2A2 /* NewDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDataController.xib; sourceTree = "<group>"; };
+		9A79002813A17069003A9C2A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9AB0EFC91396E0FE00A8A687 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		9AEA4DE113964F1700C5BE43 = {
 			isa = PBXGroup;
 			children = (
+				9A79002813A17069003A9C2A /* Entitlements.plist */,
 				9AEA4DF613964F1700C5BE43 /* books */,
 				9AEA4E1C13964F1700C5BE43 /* booksTests */,
 				9AEA4DEF13964F1700C5BE43 /* Frameworks */,
@@ -375,6 +378,7 @@
 				9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */,
 				9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */,
 				9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */,
+				9A79002913A17069003A9C2A /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,6 +502,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9A79002A13A170EC003A9C2A /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		9A79002B13A170EC003A9C2A /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "books/books-Prefix.pch";
+				INFOPLIST_FILE = "books/books-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = "Ad Hoc";
+		};
+		9A79002C13A170EC003A9C2A /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/books.app/books";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "booksTests/booksTests-Prefix.pch";
+				INFOPLIST_FILE = "booksTests/booksTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = "Ad Hoc";
+		};
 		9AEA4E2713964F1700C5BE43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -534,12 +592,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos4.3]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "books/books-Prefix.pch";
 				INFOPLIST_FILE = "books/books-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -549,11 +610,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos4.3]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "books/books-Prefix.pch";
 				INFOPLIST_FILE = "books/books-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos4.3;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -612,6 +676,7 @@
 			buildConfigurations = (
 				9AEA4E2713964F1700C5BE43 /* Debug */,
 				9AEA4E2813964F1700C5BE43 /* Release */,
+				9A79002A13A170EC003A9C2A /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -621,6 +686,7 @@
 			buildConfigurations = (
 				9AEA4E2A13964F1700C5BE43 /* Debug */,
 				9AEA4E2B13964F1700C5BE43 /* Release */,
+				9A79002B13A170EC003A9C2A /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -630,6 +696,7 @@
 			buildConfigurations = (
 				9AEA4E2D13964F1700C5BE43 /* Debug */,
 				9AEA4E2E13964F1700C5BE43 /* Release */,
+				9A79002C13A170EC003A9C2A /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

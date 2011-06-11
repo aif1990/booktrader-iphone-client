@@ -14,13 +14,19 @@
     
     IBOutlet UILabel *bookTitle, *bookAuthor, *bookPublisher;
     IBOutlet UIImageView *imageView;
+    IBOutlet UISegmentedControl *segmentedControl;
     
     SearchViewController *searchViewController;
     
 }
 
 @property (nonatomic, retain) UILabel *bookTitle, *bookAuthor, *bookPublisher;
+@property (nonatomic, retain) UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) UIImageView *imageView;
 @property (nonatomic, retain) SearchViewController *searchViewController;
+
+-(IBAction) segmentedControlIndexChanged;
+-(IBAction) have;
+-(IBAction) want;
 
 @end
