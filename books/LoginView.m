@@ -72,11 +72,15 @@
 - (void)viewDidLoad
 {
     
+    [mypassword setSecureTextEntry:YES];
+    
     NSUserDefaults *name = [NSUserDefaults standardUserDefaults];
     myusername.text = [name stringForKey:@"textFieldKey"];
     
     NSUserDefaults *passwd = [NSUserDefaults standardUserDefaults];
     mypassword.text = [passwd stringForKey:@"passwordFieldKey"];
+    
+    
     
     
     //[super viewDidLoad];
