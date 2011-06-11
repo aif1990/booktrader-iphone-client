@@ -77,7 +77,6 @@
 {
 	[listContent release];
 	[filteredListContent release];
-    //[product release];
 	
 	[super dealloc];
 }

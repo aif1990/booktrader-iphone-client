@@ -161,8 +161,6 @@
     // Set up the cell...
     NSLog(@"sunt in collection view");
     
-    
-    product = nil;
 	
         product = [self.list objectAtIndex:indexPath.row];
 	
@@ -181,8 +179,6 @@
 	// [anotherViewController release];
 	
 	NSInteger row = [indexPath row];	
-    
-    product = nil;
     
 	product = [self.list objectAtIndex:indexPath.row];
 	
@@ -245,11 +241,14 @@
 
 
 - (void)dealloc {
+    
+    
     [TableView release];
     [books release];
-    [product release];
     [list release];
     [super dealloc];
+    
+    NSLog(@"dealloc");
 }
 
 
