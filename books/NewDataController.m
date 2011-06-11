@@ -17,7 +17,7 @@
 
 @implementation NewDataController
 
-@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl, collectionViewController;
+@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl, collectionViewController, imageView2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -74,8 +74,10 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
     UIImage *image = [UIImage imageWithData:responseData];
-    [imageView setImage:image];
-    
+    if (image != NULL) {
+        [imageView2 setHidden:YES];
+        [imageView setImage:image];
+    }    
     
     bookAuthor.text = bookAuthors;
     bookPublisher.text = searchViewController.product.publisher;

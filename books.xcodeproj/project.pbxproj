@@ -11,6 +11,7 @@
 		9A05E4FF13A3AE97005ACEFD /* NewOwned.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A05E4FD13A3AE97005ACEFD /* NewOwned.xib */; };
 		9A05E50413A3B375005ACEFD /* NewWanted.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05E50213A3B374005ACEFD /* NewWanted.m */; };
 		9A05E50513A3B375005ACEFD /* NewWanted.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A05E50313A3B374005ACEFD /* NewWanted.xib */; };
+		9A05E50F13A3C1CB005ACEFD /* book_thumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A05E50E13A3C1CB005ACEFD /* book_thumb.png */; };
 		9A14010B139B9F7600BAB51E /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FA139B9F7600BAB51E /* NSObject+JSON.m */; };
 		9A14010C139B9F7600BAB51E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FC139B9F7600BAB51E /* SBJsonParser.m */; };
 		9A14010D139B9F7600BAB51E /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FE139B9F7600BAB51E /* SBJsonStreamParser.m */; };
@@ -75,6 +76,7 @@
 		9A05E50113A3B373005ACEFD /* NewWanted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWanted.h; sourceTree = "<group>"; };
 		9A05E50213A3B374005ACEFD /* NewWanted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWanted.m; sourceTree = "<group>"; };
 		9A05E50313A3B374005ACEFD /* NewWanted.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewWanted.xib; sourceTree = "<group>"; };
+		9A05E50E13A3C1CB005ACEFD /* book_thumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book_thumb.png; sourceTree = "<group>"; };
 		9A1400F8139B9F7600BAB51E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		9A1400F9139B9F7600BAB51E /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
 		9A1400FA139B9F7600BAB51E /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9A05E50E13A3C1CB005ACEFD /* book_thumb.png */,
 				9A1400F6139B9F5400BAB51E /* JSON */,
 				9ACAACE9139D46AD00056534 /* Product.h */,
 				9ACAACEA139D46AD00056534 /* Product.m */,
@@ -397,6 +400,7 @@
 				9A79002913A17069003A9C2A /* Entitlements.plist in Resources */,
 				9A05E4FF13A3AE97005ACEFD /* NewOwned.xib in Resources */,
 				9A05E50513A3B375005ACEFD /* NewWanted.xib in Resources */,
+				9A05E50F13A3C1CB005ACEFD /* book_thumb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

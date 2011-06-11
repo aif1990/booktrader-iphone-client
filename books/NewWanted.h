@@ -13,14 +13,14 @@
 @interface NewWanted : UIViewController {
     
     IBOutlet UILabel *bookTitle, *bookAuthor, *bookPublisher;
-    IBOutlet UIImageView *imageView;
+    IBOutlet UIImageView *imageView, *imageView2;
     
     WantedViewController *collectionViewController;
     
 }
 
 @property (nonatomic, retain) UILabel *bookTitle, *bookAuthor, *bookPublisher;
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, retain) UIImageView *imageView, *imageView2;
 @property (nonatomic, retain) WantedViewController *collectionViewController;
 
 @end

@@ -17,7 +17,7 @@
 
 @implementation NewWanted
 
-@synthesize bookTitle, bookAuthor, imageView, collectionViewController;
+@synthesize bookTitle, bookAuthor, imageView, collectionViewController, imageView2;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -73,7 +73,10 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
     UIImage *image = [UIImage imageWithData:responseData];
-    [imageView setImage:image];
+    if (image != NULL) {
+        [imageView2 setHidden:YES];
+        [imageView setImage:image];
+    }
     
     
     bookAuthor.text = bookAuthors;
