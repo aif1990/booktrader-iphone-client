@@ -18,6 +18,7 @@
 @synthesize booksArray;
 @synthesize bookDetailViewController;
 @synthesize TableView;
+@synthesize username;
 
 /*
  - (id)initWithStyle:(UITableViewStyle)style {
@@ -123,24 +124,26 @@
 	NSInteger row = [indexPath row];		
 	
 	if([[booksArray objectAtIndex:row] isEqual:@"Collection"]){
-		BookDetailViewController *settingDetail = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
-		self.bookDetailViewController = settingDetail;
-		
-		bookDetailViewController.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
-		
-		[self.navigationController pushViewController:bookDetailViewController animated:YES];
-        [settingDetail release];
+		        
+        CollectionViewController *settings = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
+        
+        settings.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
+
+        settings.username = username;
+        
+		[self.navigationController pushViewController:settings animated:YES];
+        [settings release];
         
 	}
 	
 	if([[booksArray objectAtIndex:row] isEqual:@"Wanted"]){
-		BookDetailViewController *settingDetail = [[WantedViewController alloc] initWithNibName:@"WantedViewController" bundle:nil];
-		self.bookDetailViewController = settingDetail;
 		
-		bookDetailViewController.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
+        WantedViewController *settingsDetail = [[WantedViewController alloc] initWithNibName:@"WantedViewController" bundle:nil];
         
-		[self.navigationController pushViewController:bookDetailViewController animated:YES];		
-		[settingDetail release];		
+        settingsDetail.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
+        
+        [self.navigationController pushViewController:settingsDetail animated:YES];
+        [settingsDetail release];
 		
 	}	
 	

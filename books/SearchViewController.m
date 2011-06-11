@@ -149,38 +149,21 @@
 	{
         product = [self.filteredListContent objectAtIndex:indexPath.row];
     }
-	/*else
-     {
-     product = [self.listContent objectAtIndex:indexPath.row];
-     }*/
-    
-	//detailsViewController.title = product.title;
-    
-   // BookDetailViewController *settingDetail = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
     
     NewDataController *settings = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
     
-    //self.bookDetailViewController = settingDetail;
     
     settings.searchViewController = self;
     
-    NSLog(@"%@\n", product.title);
+   // NSLog(@"%@\n", product.title);
     
-    //self.bookDetailViewController.title = product.title;
     
     settings.title = product.title;
-    
-   // [[self navigationController] pushViewController:bookDetailViewController animated:YES];
     
     [[self navigationController] pushViewController:settings animated:YES];
     [settings release];
     
-    
-    //[bookDetailViewController release];
-    
-    //[[self navigationController] pushViewController:detailsViewController animated:YES];
-    //[detailsViewController release];
-}
+   }
 
 
 #pragma mark -
@@ -200,7 +183,7 @@
 	/*
 	 Update the filtered array based on the search text and scope.
 	 */
-    //NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/books/search?query=ana&Search=Search&format=json"];
+   
     
     NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
     NSString *second = [first stringByAppendingString:[self urlEncodeValue:searchText]];
@@ -212,12 +195,6 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
     
-   /* NSString *text = [NSString stringWithFormat:@"title=%@&publisher=%@&authors=%@&thumbnail=%@&Search=Search&format=json", [self urlEncodeValue:searchText]];
-    
-    NSData *requestBody =  [text dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:requestBody];*/
-    
-    
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
@@ -227,23 +204,14 @@
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
     
-    //NSString *total_items = (NSString *) [data objectForKey:@"total_items"];
     
-    /* NSString *jsonData = [[NSString alloc] initWithContentsOfURL:url];
-     
-     jsonArray = [jsonData JSONValue];
-     
-     NSLog(@"%@", jsonArray);*/
     
-    NSLog(@"total items= %@\n", responseString);
+   // NSLog(@"total items= %@\n", responseString);
     
 	NSArray* result = [data objectForKey:@"result"];
 	NSEnumerator *enumerator = [result objectEnumerator];
 	NSDictionary* item;
-	/*while (item = (NSDictionary*)[enumerator nextObject]) {
-		NSLog(@"result:title = %@", [item objectForKey:@"title"]);
-	} */
-    //[self.listContent removeAllObjects];
+	
     
     [self.listContent removeAllObjects];
     
@@ -281,10 +249,6 @@
 				[self.filteredListContent addObject:product];
                 NSLog(@"amacceptat %@ (%d) :\n", product.title,
                       [product.title rangeOfString:searchText].location);
-            }
-            else { 
-                NSLog(@"am respins %@| :\n", product.title);
-                //NSLog(@"%@ \n|", result);
             }
             
 		}

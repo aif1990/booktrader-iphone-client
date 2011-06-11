@@ -12,11 +12,12 @@
 #import "NavigationController.h"
 #import "booksAppDelegate.h"
 #import "Product.h"
+#import "CollectionViewController.h"
 
 
 @implementation NewDataController
 
-@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl;
+@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl, collectionViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

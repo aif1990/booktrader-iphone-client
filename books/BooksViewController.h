@@ -15,11 +15,13 @@
 	IBOutlet UITableView *TableView;
 	NSMutableArray *booksArray;
 	BookDetailViewController *bookDetailViewController;
+    NSString *username;
 	
 }
 @property (nonatomic, retain) NSMutableArray *booksArray;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 @property (nonatomic, retain) UITableView *TableView;
+@property (nonatomic, retain) NSString *username;
 
 @end
 

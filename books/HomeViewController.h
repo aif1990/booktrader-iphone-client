@@ -10,13 +10,14 @@
 
 @class BookDetailViewController;
 @class LoginView;
+@class BooksViewController;
 
 @interface HomeViewController : UIViewController <UIActionSheetDelegate> {
     
     BookDetailViewController *bookDetailViewController;
     IBOutlet UILabel *welcomeMessage;
     LoginView *loginView;
-    
+    IBOutlet BooksViewController *booksViewController;
 }
 
 - (IBAction)showActionSheet;
@@ -28,5 +29,6 @@
 @property(nonatomic, retain) LoginView *loginView;
 @property(nonatomic, retain) UILabel *welcomeMessage;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
+@property (nonatomic, retain) BooksViewController *booksViewController;
 
 @end

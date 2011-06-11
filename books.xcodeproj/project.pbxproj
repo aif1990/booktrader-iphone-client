@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A05E4FE13A3AE97005ACEFD /* NewOwned.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A05E4FC13A3AE96005ACEFD /* NewOwned.m */; };
+		9A05E4FF13A3AE97005ACEFD /* NewOwned.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A05E4FD13A3AE97005ACEFD /* NewOwned.xib */; };
 		9A14010B139B9F7600BAB51E /* NSObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FA139B9F7600BAB51E /* NSObject+JSON.m */; };
 		9A14010C139B9F7600BAB51E /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FC139B9F7600BAB51E /* SBJsonParser.m */; };
 		9A14010D139B9F7600BAB51E /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A1400FE139B9F7600BAB51E /* SBJsonStreamParser.m */; };
@@ -65,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A05E4FB13A3AE96005ACEFD /* NewOwned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOwned.h; sourceTree = "<group>"; };
+		9A05E4FC13A3AE96005ACEFD /* NewOwned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOwned.m; sourceTree = "<group>"; };
+		9A05E4FD13A3AE97005ACEFD /* NewOwned.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOwned.xib; sourceTree = "<group>"; };
 		9A1400F8139B9F7600BAB51E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		9A1400F9139B9F7600BAB51E /* NSObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSON.h"; sourceTree = "<group>"; };
 		9A1400FA139B9F7600BAB51E /* NSObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSON.m"; sourceTree = "<group>"; };
@@ -262,6 +267,9 @@
 				9A241B8213A00F0500AFF2A2 /* NewDataController.h */,
 				9A241B8313A00F0600AFF2A2 /* NewDataController.m */,
 				9A241B8413A00F0600AFF2A2 /* NewDataController.xib */,
+				9A05E4FB13A3AE96005ACEFD /* NewOwned.h */,
+				9A05E4FC13A3AE96005ACEFD /* NewOwned.m */,
+				9A05E4FD13A3AE97005ACEFD /* NewOwned.xib */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -379,6 +387,7 @@
 				9AE2FEAE1399209E002D5E97 /* NewMessageView.xib in Resources */,
 				9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */,
 				9A79002913A17069003A9C2A /* Entitlements.plist in Resources */,
+				9A05E4FF13A3AE97005ACEFD /* NewOwned.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +446,7 @@
 				9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */,
 				9ACAACEB139D46AD00056534 /* Product.m in Sources */,
 				9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */,
+				9A05E4FE13A3AE97005ACEFD /* NewOwned.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

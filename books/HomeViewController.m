@@ -11,12 +11,14 @@
 #import "BookDetailViewController.h"
 #import "NavigationController.h"
 #import "booksAppDelegate.h"
+#import "BooksViewController.h"
 
 @implementation HomeViewController
 
 @synthesize bookDetailViewController;
 @synthesize welcomeMessage;
 @synthesize loginView;
+@synthesize booksViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -123,7 +125,9 @@
     if (loginView !=NULL && loginView.username != NULL)  {
         NSString *user = [@"Welcome, " stringByAppendingString:loginView.username];
         welcomeMessage.text = [user stringByAppendingString:@"!"];
+        booksViewController.username = loginView.username;
     }
+    
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
