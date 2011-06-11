@@ -28,6 +28,9 @@
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
+		9AC2D17013A4097B0095B462 /* 09-chat-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC2D16F13A4097B0095B462 /* 09-chat-2.png */; };
+		9AC2D17313A409D10095B462 /* 53-house.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC2D17213A409D10095B462 /* 53-house.png */; };
+		9AC2D17513A409FD0095B462 /* 96-book.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AC2D17413A409FD0095B462 /* 96-book.png */; };
 		9ACAACEB139D46AD00056534 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ACAACEA139D46AD00056534 /* Product.m */; };
 		9AE200401399712E002D5E97 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE2003F1399712E002D5E97 /* CoreFoundation.framework */; };
 		9AE2FEAD1399209E002D5E97 /* NewMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2FEAB1399209E002D5E97 /* NewMessageView.m */; };
@@ -107,6 +110,9 @@
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		9AB0F0091397F44E00A8A687 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		9AB0F00A1397F44F00A8A687 /* LoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginView.xib; sourceTree = "<group>"; };
+		9AC2D16F13A4097B0095B462 /* 09-chat-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-chat-2.png"; sourceTree = "<group>"; };
+		9AC2D17213A409D10095B462 /* 53-house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "53-house.png"; sourceTree = "<group>"; };
+		9AC2D17413A409FD0095B462 /* 96-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "96-book.png"; sourceTree = "<group>"; };
 		9ACAACE9139D46AD00056534 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		9ACAACEA139D46AD00056534 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
 		9AE2003F1399712E002D5E97 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -238,6 +244,9 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9AC2D17413A409FD0095B462 /* 96-book.png */,
+				9AC2D17213A409D10095B462 /* 53-house.png */,
+				9AC2D16F13A4097B0095B462 /* 09-chat-2.png */,
 				9A05E51713A3DED1005ACEFD /* monster_book.jpg */,
 				9A05E50E13A3C1CB005ACEFD /* book_thumb.png */,
 				9A1400F6139B9F5400BAB51E /* JSON */,
@@ -405,6 +414,9 @@
 				9A05E50513A3B375005ACEFD /* NewWanted.xib in Resources */,
 				9A05E50F13A3C1CB005ACEFD /* book_thumb.png in Resources */,
 				9A05E51813A3DED1005ACEFD /* monster_book.jpg in Resources */,
+				9AC2D17013A4097B0095B462 /* 09-chat-2.png in Resources */,
+				9AC2D17313A409D10095B462 /* 53-house.png in Resources */,
+				9AC2D17513A409FD0095B462 /* 96-book.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

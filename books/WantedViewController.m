@@ -43,6 +43,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if(username == NULL)
+        username = @"nonExistingUser";
+    
     self.list = [NSMutableArray arrayWithCapacity:100];
     
     NSString *first = @"http://abstractbinary.org:6543/users/";
