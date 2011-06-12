@@ -12,13 +12,16 @@
 #import "NavigationController.h"
 #import "booksAppDelegate.h"
 #import "BooksViewController.h"
+#import "JSON.h"
 
 @implementation HomeViewController
 
 @synthesize bookDetailViewController;
-@synthesize welcomeMessage;
+@synthesize welcomeMessage, wantedBooksNb, ownedBooksNb;
 @synthesize loginView;
 @synthesize booksViewController;
+@synthesize imgView;
+@synthesize logIm;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,6 +93,11 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     
     welcomeMessage.text = @"Not logged in";
+    ownedBooksNb.text = @"";
+    wantedBooksNb.text = @"";
+    
+    [imgView setHidden:YES];
+    [logIm setHidden:NO];
     
     [loginView release];
     loginView = NULL;
@@ -97,16 +105,10 @@
 }
 
 - (void)openLoginView {
-    /*LoginView *myController = [[LoginView alloc] init];
-    [self presentModalViewController:myController animated:YES];
-    [myController release];*/
     
     loginView = [[LoginView alloc] initWithNibName:@"LoginView" bundle:nil];
     
     [self presentModalViewController:loginView animated:YES];
-    
-    //[loginView autorelease];
-    
     
 }
 
@@ -126,6 +128,65 @@
         NSString *user = [@"Welcome, " stringByAppendingString:loginView.username];
         welcomeMessage.text = [user stringByAppendingString:@"!"];
         booksViewController.username = loginView.username;
+        
+        //gravatar
+        
+        NSString *first = @"http://abstractbinary.org:6543/users/";
+        NSString *second = [first stringByAppendingString:loginView.username];
+        NSString *nurl = [second stringByAppendingString:@"/?format=json"];
+        
+        NSURL *url = [NSURL URLWithString:nurl];
+        
+        
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        [request setTimeoutInterval:5];
+        
+        NSURLResponse *response = NULL;
+        NSError *requestError = NULL;
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+        NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+        
+        SBJsonParser *parser = [[SBJsonParser alloc] init];
+        
+        NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+        
+        NSString *gurl = (NSString*) [data objectForKey:@"gravatar"];
+        
+        NSURL *gvurl = [NSURL URLWithString:gurl];
+        
+        NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:gvurl];
+        [req setTimeoutInterval:5];
+        [req setHTTPMethod:@"POST"];
+        
+        NSURLResponse *resp = NULL;
+        NSError *reqError = NULL;
+        NSData *respData = [NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:&reqError];
+        
+        
+        UIImage *img = [UIImage imageWithData:respData];
+        if (img != NULL) {
+            [logIm setHidden:YES];
+            [imgView setImage:img];
+        }    
+
+        //gravatar appeared
+     
+        NSMutableArray *wanted = (NSMutableArray*) [data objectForKey:@"want"];
+        NSMutableArray *owned = (NSMutableArray*) [data objectForKey:@"owned"];
+        
+       /* NSString *intro1 = @"You have ";
+        NSInteger *nb = [owned count];
+        NSString *end1 = @" books in your collection";*/
+        
+        NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection*", [owned count]];   
+        NSString *txt2 = [NSString stringWithFormat:@"**You want %d books**", [wanted count]];
+        
+        ownedBooksNb.text = txt1;
+        wantedBooksNb.text = txt2;
+        
+        
+        //NSLog(@"%d\n", [wanted count]);
+        
     }
     
     

@@ -10,9 +10,6 @@
 #import "CoreFoundation/CFString.h"
 #import "HomeViewController.h"
 
-//#import "ASIHTTPRequest.h"
-//#import "ASIFormDataRequest.h"
-
 
 @implementation LoginView
 
@@ -81,10 +78,6 @@
     mypassword.text = [passwd stringForKey:@"passwordFieldKey"];
     
     
-    
-    
-    //[super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (NSString *)urlEncodeValue:(NSString *)str
@@ -126,7 +119,6 @@
 	}
 	else if (response)
 	{
-		//NSLog (@"[DEBUG]: HTTP Response is %@", responseString);
         
         bool logged_in =  false;
     
@@ -150,8 +142,6 @@
         
 	}
     
-    
-    // [response release];
 }
 
 - (void)viewDidUnload

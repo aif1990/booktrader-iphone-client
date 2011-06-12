@@ -61,6 +61,10 @@
 		9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4513965FA200C5BE43 /* WantedViewController.xib */; };
 		9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */; };
 		9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */; };
+		9AF7235413A4D00100470A1E /* Vista_login1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235313A4D00100470A1E /* Vista_login1.JPG */; };
+		9AF7235D13A4D92400470A1E /* apple-inc1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235C13A4D92400470A1E /* apple-inc1.jpg */; };
+		9AF7235F13A4D98D00470A1E /* login_apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235E13A4D98D00470A1E /* login_apple.jpg */; };
+		9AF7236113A4D9D300470A1E /* Applelog.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7236013A4D9D300470A1E /* Applelog.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,10 @@
 		9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		9AF7235313A4D00100470A1E /* Vista_login1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Vista_login1.JPG; sourceTree = "<group>"; };
+		9AF7235C13A4D92400470A1E /* apple-inc1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "apple-inc1.jpg"; sourceTree = "<group>"; };
+		9AF7235E13A4D98D00470A1E /* login_apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_apple.jpg; sourceTree = "<group>"; };
+		9AF7236013A4D9D300470A1E /* Applelog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Applelog.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,6 +252,10 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9AF7236013A4D9D300470A1E /* Applelog.png */,
+				9AF7235E13A4D98D00470A1E /* login_apple.jpg */,
+				9AF7235C13A4D92400470A1E /* apple-inc1.jpg */,
+				9AF7235313A4D00100470A1E /* Vista_login1.JPG */,
 				9AC2D17413A409FD0095B462 /* 96-book.png */,
 				9AC2D17213A409D10095B462 /* 53-house.png */,
 				9AC2D16F13A4097B0095B462 /* 09-chat-2.png */,
@@ -417,6 +429,10 @@
 				9AC2D17013A4097B0095B462 /* 09-chat-2.png in Resources */,
 				9AC2D17313A409D10095B462 /* 53-house.png in Resources */,
 				9AC2D17513A409FD0095B462 /* 96-book.png in Resources */,
+				9AF7235413A4D00100470A1E /* Vista_login1.JPG in Resources */,
+				9AF7235D13A4D92400470A1E /* apple-inc1.jpg in Resources */,
+				9AF7235F13A4D98D00470A1E /* login_apple.jpg in Resources */,
+				9AF7236113A4D9D300470A1E /* Applelog.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

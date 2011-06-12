@@ -15,9 +15,12 @@
 @interface HomeViewController : UIViewController <UIActionSheetDelegate> {
     
     BookDetailViewController *bookDetailViewController;
-    IBOutlet UILabel *welcomeMessage;
+    IBOutlet UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb;
     LoginView *loginView;
     IBOutlet BooksViewController *booksViewController;
+    IBOutlet UIImageView *imgView;
+    IBOutlet UIImageView *logIm;
+    
 }
 
 - (IBAction)showActionSheet;
@@ -26,8 +29,10 @@
 - (void)openRegisterView;
 - (void)Logout;
 
+@property (nonatomic, retain) UIImageView *logIm;
+@property (nonatomic, retain) UIImageView *imgView;
 @property(nonatomic, retain) LoginView *loginView;
-@property(nonatomic, retain) UILabel *welcomeMessage;
+@property(nonatomic, retain) UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 @property (nonatomic, retain) BooksViewController *booksViewController;
 
