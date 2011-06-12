@@ -178,14 +178,21 @@
         NSInteger *nb = [owned count];
         NSString *end1 = @" books in your collection";*/
         
-        NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection*", [owned count]];   
+        if ([owned count] >1) {
+            NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection*", [owned count]]; 
+            ownedBooksNb.text = txt1;
+        } else {
+            NSString *txt1 = [NSString stringWithFormat:@"*You have %d book in your collection*", [owned count]];
+            ownedBooksNb.text = txt1;
+        }
+        
+        if ([wanted count] >1) {
         NSString *txt2 = [NSString stringWithFormat:@"**You want %d books**", [wanted count]];
-        
-        ownedBooksNb.text = txt1;
-        wantedBooksNb.text = txt2;
-        
-        
-        //NSLog(@"%d\n", [wanted count]);
+            wantedBooksNb.text = txt2;
+        } else {
+            NSString *txt2 = [NSString stringWithFormat:@"**You want %d book**", [wanted count]];
+            wantedBooksNb.text = txt2;
+        }
         
     }
     
