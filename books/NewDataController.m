@@ -204,7 +204,7 @@
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
         
-        NSLog(@"hjghghjh %@", [data objectForKey:@"status"]);
+       // NSLog(@"hjghghjh %@", [data objectForKey:@"status"]);
         
         
         if ( [(NSString*) [data objectForKey:@"reason"] compare:@"book already owned"] == NSOrderedSame) {

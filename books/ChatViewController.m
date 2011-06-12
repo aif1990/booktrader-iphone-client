@@ -6,70 +6,116 @@
 //  Copyright 2011 Imperial College London. All rights reserved.
 //
 
-#import "ChatViewController.h"
-#import "BookDetailViewController.h"
+#import "BooksViewController.h"
 #import "booksAppDelegate.h"
-#import "CollectionViewController.h"
+#import "ChatViewController.h"
 #import "WantedViewController.h"
 #import "NavigationController.h"
+#import "NewOwned.h"
+#import "Conversations.h"
+#import "LoginView.h"
+#import "JSON.h"
 
-@implementation  ChatViewController
+@implementation ChatViewController
 
-@synthesize booksArray;
-@synthesize bookDetailViewController;
+@synthesize books;
 @synthesize TableView;
-
-/*
- - (id)initWithStyle:(UITableViewStyle)style {
- // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
- if (self = [super initWithStyle:style]) {
- }
- return self; 
- }
- */
+@synthesize conversation;
+@synthesize loginView;
+@synthesize username;
+@synthesize list;
+@synthesize keys;
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.title = NSLocalizedString(@"Chat",@"Chat");
+    
+    if(username == NULL)
+        username = @"nonExistingUser";
+    
+    self.list = [[NSMutableDictionary alloc] init];
+    self.keys = [[NSMutableArray alloc] init];
+    
+   // self.list = [NSMutableArray arrayWithCapacity:100];
+    
+    NSString *nurl = @"http://abstractbinary.org:6543/messages/list?format=json";
+    
+    NSURL *url = [NSURL URLWithString:nurl];
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
+    
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    
+    NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
+        
+        NSLog(@"%@", username);
+        NSLog(@"%@",[data objectForKey:@"status"]);
+        
+        UIAlertView* alertView = nil; 
+        
+        @try {
+            alertView = [[UIAlertView alloc] initWithTitle:@"Login Status" message:@"Check your login status" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil]; 
+            
+            [alertView show];  
+        } @finally {
+            if (alertView)
+                [alertView release];
+        }
+    } else {
+        
+        
+        NSDictionary* conversations = [data objectForKey:@"conversations"];
+        NSString* user;
+        NSDictionary* item;
+        
+        NSEnumerator *enumerator = [conversations keyEnumerator];
+        
+        [self.list removeAllObjects];
+        
+        
+        while (user = (NSDictionary*) [enumerator nextObject]) {
+            
+            if ([self.list valueForKey:user] == nil) {
+             
+                [self.list setValue:[[NSMutableArray alloc] init] forKey:user];
+                [self.keys addObject:user];
+                
+            }
+            
+            NSArray *convs = [conversations objectForKey:user];
+            NSEnumerator *enums = [convs objectEnumerator];
+            NSLog(@"utilizatorul este %@", convs);
+            
+            while (item = (NSDictionary*) [enums nextObject]) {
+                
+                NSLog(@"creez vectorul");
+                
+                [[self.list valueForKey:user] addObject:[Conversations productWithType:[item objectForKey:@"date"] body:[item objectForKey:@"body"] recipient:[item objectForKey:@"recipient"] sender:[item objectForKey:@"sender"] subject:[item objectForKey:@"subject"]]];
+                
+            }
+            
+        }
+        
+        
+        NSLog(@"bau %@", [self.list valueForKey:@"scvalex"]);
+    }
+    
+    [self.TableView reloadData];
+    
+    self.TableView.scrollEnabled = YES;
+    
 	
-	NSMutableArray *array = [[NSArray alloc] initWithObjects:@"conv1",@"conv2", nil];
-	self.booksArray = array;
-   	[array release];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-
-/*
- - (void)viewWillAppear:(BOOL)animated {
- [super viewWillAppear:animated];
- }
- */
-/*
- - (void)viewDidAppear:(BOOL)animated {
- [super viewDidAppear:animated];
- }
- */
-/*
- - (void)viewWillDisappear:(BOOL)animated {
- [super viewWillDisappear:animated];
- }
- */
-/*
- - (void)viewDidDisappear:(BOOL)animated {
- [super viewDidDisappear:animated];
- }
- */
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -86,108 +132,76 @@
 
 #pragma mark Table view methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-   return [self.booksArray count];
+    //NSLog(@"count = %d\n", self.books.count);
+    return [self.list count];
+    
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSLog(@"controller view\n");
+    
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.hidesAccessoryWhenEditing = YES;
     }
+	
+    //conversation = [self.list objectForKey:[self.keys objectAtIndex:indexPath.row]];
+	
+    /*if (conversation.sender != username) {
+        cell.textLabel.text = conversation.sender;
+        
+    } else {
+        cell.textLabel.text = conversation.recipient;
+    }*/
     
-    // Set up the cell...
+    cell.textLabel.text = [self.keys objectAtIndex:indexPath.row];
     
     
-    //NSLog([NSString stringWithFormat:@"%i,%i",indexPath.row,(indexPath.row-count)]);
-    
-    
-    NSInteger row = [indexPath row];
-	cell.text = [booksArray objectAtIndex:row];
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+    
 	
-	NSInteger row = [indexPath row];		
+	NSInteger row = [indexPath row];	
+    
+	//conversation = [self.list objectAtIndex:indexPath.row];
 	
-	if([[booksArray objectAtIndex:row] isEqual:@"conv1"]){
-		BookDetailViewController *settingDetail = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
-		self.bookDetailViewController = settingDetail;
-		
-		bookDetailViewController.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
-		
-		[self.navigationController pushViewController:bookDetailViewController animated:YES];
-        [settingDetail release];
-        
-	}
-	
-	if([[booksArray objectAtIndex:row] isEqual:@"conv2"]){
-		BookDetailViewController *settingDetail = [[WantedViewController alloc] initWithNibName:@"WantedViewController" bundle:nil];
-		self.bookDetailViewController = settingDetail;
-		
-		bookDetailViewController.title = [NSString stringWithFormat:@"%@", [booksArray objectAtIndex:row]];
-        
-		[self.navigationController pushViewController:bookDetailViewController animated:YES];		
-		[settingDetail release];		
-		
-	}	
+    //NewOwned *settings = [[NewOwned alloc] initWithNibName:@"NewOwned" bundle:nil];
+    
+    
+    //settings.collectionViewController = self;
+    
+    
+    //settings.title = conversation.title;
+    
+    //[[self navigationController] pushViewController:settings animated:YES];
+    //[settings release];
+    
 	
 }
 
 
 
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
- 
-
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-
-
-
 - (void)dealloc {
-	[bookDetailViewController release]; 
+    
+    
+    [TableView release];
+    [books release];
+    [list release];
     [super dealloc];
+    
+    NSLog(@"dealloc");
 }
 
 

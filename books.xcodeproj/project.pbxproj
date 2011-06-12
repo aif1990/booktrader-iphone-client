@@ -65,6 +65,9 @@
 		9AF7235D13A4D92400470A1E /* apple-inc1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235C13A4D92400470A1E /* apple-inc1.jpg */; };
 		9AF7235F13A4D98D00470A1E /* login_apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235E13A4D98D00470A1E /* login_apple.jpg */; };
 		9AF7236113A4D9D300470A1E /* Applelog.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7236013A4D9D300470A1E /* Applelog.png */; };
+		9AF7236313A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7236213A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png */; };
+		9AF7237513A5117A00470A1E /* 08-chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7237413A5117A00470A1E /* 08-chat.png */; };
+		9AF7238113A52D4400470A1E /* Conversations.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF7238013A52D4400470A1E /* Conversations.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +167,10 @@
 		9AF7235C13A4D92400470A1E /* apple-inc1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "apple-inc1.jpg"; sourceTree = "<group>"; };
 		9AF7235E13A4D98D00470A1E /* login_apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_apple.jpg; sourceTree = "<group>"; };
 		9AF7236013A4D9D300470A1E /* Applelog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Applelog.png; sourceTree = "<group>"; };
+		9AF7236213A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "banana-boy-worm-from-worms-2992.png"; sourceTree = "<group>"; };
+		9AF7237413A5117A00470A1E /* 08-chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-chat.png"; sourceTree = "<group>"; };
+		9AF7237F13A52D4400470A1E /* Conversations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversations.h; sourceTree = "<group>"; };
+		9AF7238013A52D4400470A1E /* Conversations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversations.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +259,8 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9AF7237413A5117A00470A1E /* 08-chat.png */,
+				9AF7236213A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png */,
 				9AF7236013A4D9D300470A1E /* Applelog.png */,
 				9AF7235E13A4D98D00470A1E /* login_apple.jpg */,
 				9AF7235C13A4D92400470A1E /* apple-inc1.jpg */,
@@ -305,6 +314,8 @@
 				9A05E50113A3B373005ACEFD /* NewWanted.h */,
 				9A05E50213A3B374005ACEFD /* NewWanted.m */,
 				9A05E50313A3B374005ACEFD /* NewWanted.xib */,
+				9AF7237F13A52D4400470A1E /* Conversations.h */,
+				9AF7238013A52D4400470A1E /* Conversations.m */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -433,6 +444,8 @@
 				9AF7235D13A4D92400470A1E /* apple-inc1.jpg in Resources */,
 				9AF7235F13A4D98D00470A1E /* login_apple.jpg in Resources */,
 				9AF7236113A4D9D300470A1E /* Applelog.png in Resources */,
+				9AF7236313A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png in Resources */,
+				9AF7237513A5117A00470A1E /* 08-chat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +506,7 @@
 				9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */,
 				9A05E4FE13A3AE97005ACEFD /* NewOwned.m in Sources */,
 				9A05E50413A3B375005ACEFD /* NewWanted.m in Sources */,
+				9AF7238113A52D4400470A1E /* Conversations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -98,7 +98,8 @@
         [self.list addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]]];
     }
     
-        NSLog(@"%@", self.list);}
+        //NSLog(@"%@", self.list);}
+    }
     
     [self.TableView reloadData];
     
@@ -178,7 +179,7 @@
     }
     
     // Set up the cell...
-    NSLog(@"sunt in collection view");
+   // NSLog(@"sunt in collection view");
     
 	
         product = [self.list objectAtIndex:indexPath.row];
@@ -192,10 +193,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
+    
 	
 	NSInteger row = [indexPath row];	
     

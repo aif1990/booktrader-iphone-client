@@ -50,6 +50,7 @@
     self.searchDisplayController.searchBar.scopeButtonTitles = nil;
     self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Title",@"Author",@"Publisher", nil];
     self.searchDisplayController.searchBar.showsScopeBar = YES;
+   // self.searchDisplayController.searchBar.selectedScopeButtonIndex = 0;
     
 }
 
@@ -153,12 +154,9 @@
 }
 
 
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    
-	/*
-	 Update the filtered array based on the search text and scope.
-	 */
    
     
     NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
@@ -193,11 +191,6 @@
     }
     
 	[self.filteredListContent removeAllObjects]; // First clear the filtered array.
-	
-	/*
-	 Search the main list for products whose type matches the scope (if selected) and whose name matches searchText; add items that match to the filtered array.
-     
-	 */
     
     
     
@@ -205,19 +198,18 @@
 	{
             
         
-		if ([scope isEqualToString:@"Title"] || [product.title isEqualToString:scope])		{
+		if ([scope isEqualToString:@"Title"] || [product.title isEqualToString:scope] || self.searchDisplayController.searchBar.selectedScopeButtonIndex == 0)		{
             
             
             if([product.title rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
 			{
 				[self.filteredListContent addObject:product];
-                //NSLog(@"amacceptat %@ (%d) :\n", product.title,
-                      //[product.title rangeOfString:searchText].location);
+                
             }
             
 		}
         
-        if ([scope isEqualToString:@"Author"]) {
+        if ([scope isEqualToString:@"Author"] || self.searchDisplayController.searchBar.selectedScopeButtonIndex == 1) {
             
             
             NSEnumerator *enums = [product.author objectEnumerator];
@@ -233,7 +225,7 @@
             
         }
         
-        if ([scope isEqualToString:@"Publisher"] || [product.publisher isEqualToString:scope]) {
+        if ([scope isEqualToString:@"Publisher"] || [product.publisher isEqualToString:scope] ||self.searchDisplayController.searchBar.selectedScopeButtonIndex == 2) {
             
             
             if([product.publisher rangeOfString:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch)].location != NSNotFound)
@@ -246,7 +238,17 @@
         }
 	}
     
+    
 }
+ 
+//put this if we want to search for thw whole string not char by char : not working in some cases.
+
+/*- (void)searchBarSearchButtonClicked:(UISearchBar*)searchBar
+{
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text]
+                               scope:[self.searchDisplayController.searchBar selectedScopeButtonIndex]];
+    [self.searchDisplayController.searchResultsTableView reloadData];
+}*/
 
 
 #pragma mark -
@@ -260,12 +262,14 @@
         
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+    
+   // return NO; if we want to search for the whole string not char by char
 }
 
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
-    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
+   [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     
         

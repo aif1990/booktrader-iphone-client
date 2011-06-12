@@ -94,8 +94,8 @@
         [self.list addObject:[Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]]];
     }
     
-        NSLog(@"%@", self.list); }
-    
+      //  NSLog(@"%@", self.list); }
+    }
     [self.TableView reloadData];
     
     self.TableView.scrollEnabled = YES;

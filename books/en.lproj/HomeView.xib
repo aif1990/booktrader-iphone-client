@@ -75,7 +75,6 @@
 						<string key="NSFrame">{{100, 64}, {190, 64}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -264,10 +263,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="664420589"/>
 							<reference ref="1061213677"/>
-							<reference ref="336166547"/>
-							<reference ref="122055900"/>
 							<reference ref="796035476"/>
 							<reference ref="628125479"/>
+							<reference ref="336166547"/>
+							<reference ref="122055900"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>

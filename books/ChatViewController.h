@@ -9,19 +9,27 @@
 #import <UIKit/UIKit.h>
 
 
-@class BookDetailViewController;
+@class Conversations;
+@class LoginView;
 
 @interface ChatViewController : UIViewController <UITableViewDelegate,UITableViewDataSource> {
 	
 	IBOutlet UITableView *TableView;
-	NSMutableArray *booksArray;
-	BookDetailViewController *bookDetailViewController;
-	
+	NSMutableArray *books;
+    Conversations *conversation;
+	LoginView *loginView;
+    NSString *username;
+    NSMutableDictionary		*list;
+    NSMutableArray *keys;
+    
 }
-
+@property (nonatomic, retain) NSMutableArray *books;
 @property (nonatomic, retain) UITableView *TableView;
-@property (nonatomic, retain) NSMutableArray *booksArray;
-@property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
+@property (nonatomic, retain) Conversations *conversation;
+@property (nonatomic, retain) LoginView *loginView;
+@property (nonatomic, retain) NSString *username;
+@property (nonatomic, retain) NSMutableDictionary *list;
+@property (nonatomic, retain) NSMutableArray *keys;
 
 @end
 
