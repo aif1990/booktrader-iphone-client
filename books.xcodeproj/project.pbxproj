@@ -24,6 +24,7 @@
 		9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14010A139B9F7600BAB51E /* SBJsonWriter.m */; };
 		9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B8313A00F0600AFF2A2 /* NewDataController.m */; };
 		9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B8413A00F0600AFF2A2 /* NewDataController.xib */; };
+		9A2C58BF13A68B5400B4BC09 /* talkpeople.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */; };
 		9A79002913A17069003A9C2A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A79002813A17069003A9C2A /* Entitlements.plist */; };
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
@@ -111,6 +112,7 @@
 		9A241B8213A00F0500AFF2A2 /* NewDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDataController.h; sourceTree = "<group>"; };
 		9A241B8313A00F0600AFF2A2 /* NewDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDataController.m; sourceTree = "<group>"; };
 		9A241B8413A00F0600AFF2A2 /* NewDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDataController.xib; sourceTree = "<group>"; };
+		9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = talkpeople.jpg; sourceTree = "<group>"; };
 		9A79002813A17069003A9C2A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		9AB0EFC91396E0FE00A8A687 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		9AEA4DF613964F1700C5BE43 /* books */ = {
 			isa = PBXGroup;
 			children = (
+				9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */,
 				9AF7237413A5117A00470A1E /* 08-chat.png */,
 				9AF7236213A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png */,
 				9AF7236013A4D9D300470A1E /* Applelog.png */,
@@ -446,6 +449,7 @@
 				9AF7236113A4D9D300470A1E /* Applelog.png in Resources */,
 				9AF7236313A4EA0200470A1E /* banana-boy-worm-from-worms-2992.png in Resources */,
 				9AF7237513A5117A00470A1E /* 08-chat.png in Resources */,
+				9A2C58BF13A68B5400B4BC09 /* talkpeople.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

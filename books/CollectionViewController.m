@@ -70,8 +70,8 @@
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
         
-        NSLog(@"%@", username);
-        NSLog(@"%@",[data objectForKey:@"status"]);
+        //NSLog(@"%@", username);
+        //NSLog(@"%@",[data objectForKey:@"status"]);
         
         UIAlertView* alertView = nil; 
         
