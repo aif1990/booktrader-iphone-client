@@ -28,8 +28,14 @@
 @synthesize keys;
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+-(void)viewDidLoad{
+    
+     [super viewDidLoad];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+   
     
     if(username == NULL)
         username = @"nonExistingUser";

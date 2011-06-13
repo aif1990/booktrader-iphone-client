@@ -86,7 +86,8 @@
 	
     convs = [self.convers objectAtIndex:indexPath.row];
 	
-	cell.textLabel.text = self.convs.subject;
+	cell.textLabel.text = self.convs.body;
+    
     
     
 	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
