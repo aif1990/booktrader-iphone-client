@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
             
-    NSLog(@"conversations' array %@", self.convers);
+    //NSLog(@"conversations' array %@", self.convers);
     
     
     [self.TableView reloadData];
@@ -86,13 +86,22 @@
 	
     convs = [self.convers objectAtIndex:indexPath.row];
 	
+    
+    //[cell.textLabel sizeThatFits:cell.frame.size];
+    
 	cell.textLabel.text = self.convs.body;
+    cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+    cell.textLabel.numberOfLines = 0;
+    CGSize size = [cell.textLabel sizeThatFits:cell.frame.size];
+    cell.frame = CGRectMake(120, 33, size.width, size.height);
+    //cell.autoresizesSubviews = YES;
     
-    
+    NSLog(@"text:%@", self.convs.body);
     
 	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;
 }
+
 
 
 /*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

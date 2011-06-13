@@ -47,7 +47,7 @@
     if(username == NULL)
         username = @"nonExistingUser";
     
-    self.list = [NSMutableArray arrayWithCapacity:100];
+    self.list = [[NSMutableArray alloc] init];
     
     NSString *first = @"http://abstractbinary.org:6543/users/";
     NSString *second = [first stringByAppendingString:username];

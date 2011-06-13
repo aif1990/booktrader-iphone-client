@@ -43,7 +43,6 @@
     self.list = [[NSMutableDictionary alloc] init];
     self.keys = [[NSMutableArray alloc] init];
     
-   // self.list = [NSMutableArray arrayWithCapacity:100];
     
     NSString *nurl = @"http://abstractbinary.org:6543/messages/list?format=json";
     
