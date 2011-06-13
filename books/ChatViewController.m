@@ -15,6 +15,7 @@
 #import "Conversations.h"
 #import "LoginView.h"
 #import "JSON.h"
+#import "NewChatConversation.h"
 
 @implementation ChatViewController
 
@@ -153,15 +154,6 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
 	
-    //conversation = [self.list objectForKey:[self.keys objectAtIndex:indexPath.row]];
-	
-    /*if (conversation.sender != username) {
-        cell.textLabel.text = conversation.sender;
-        
-    } else {
-        cell.textLabel.text = conversation.recipient;
-    }*/
-    
     cell.textLabel.text = [self.keys objectAtIndex:indexPath.row];
     
     
@@ -172,21 +164,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	
-	NSInteger row = [indexPath row];	
+
     
-	//conversation = [self.list objectAtIndex:indexPath.row];
-	
-    //NewOwned *settings = [[NewOwned alloc] initWithNibName:@"NewOwned" bundle:nil];
+    NewChatConversation *settings = [[NewChatConversation alloc] initWithNibName:@"NewChatConversation" bundle:nil];
     
+    
+    settings.convers = [self.list valueForKey:[self.keys objectAtIndex:indexPath.row]];
     
     //settings.collectionViewController = self;
     
     
-    //settings.title = conversation.title;
     
-    //[[self navigationController] pushViewController:settings animated:YES];
-    //[settings release];
+    settings.title = [self.keys objectAtIndex:indexPath.row];
+    
+    [[self navigationController] pushViewController:settings animated:YES];
+    [settings release];
     
 	
 }

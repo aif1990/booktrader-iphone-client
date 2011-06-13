@@ -169,8 +169,7 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"controller view\n");
-    
+    //NSLog(@"controller view\n");
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -182,7 +181,7 @@
    // NSLog(@"sunt in collection view");
     
 	
-        product = [self.list objectAtIndex:indexPath.row];
+    product = [self.list objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = product.title;
 

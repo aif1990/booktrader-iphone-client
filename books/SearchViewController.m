@@ -178,7 +178,7 @@
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
 
-	NSArray* result = [data objectForKey:@"result"];
+	NSArray* result = [data objectForKey:@"google_books"];
 	NSEnumerator *enumerator = [result objectEnumerator];
 	NSDictionary* item;
 	
