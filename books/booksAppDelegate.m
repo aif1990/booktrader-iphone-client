@@ -31,7 +31,8 @@
     
     NewMessageView *settingDetail = [[NewMessageView alloc] initWithNibName:@"NewMessageView" bundle:nil];
     settingDetail.title = [NSString stringWithFormat:@"New Message"];
-    [self.navigationController pushViewController:settingDetail animated:YES];
+    //[self.navigationController pushViewController:settingDetail animated:YES];
+    [self.navigationController presentModalViewController:settingDetail animated:YES];
     [settingDetail release];
     
 }

@@ -16,7 +16,7 @@
 @synthesize recipient;
 @synthesize subject;
 @synthesize message;
-
+@synthesize alert;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,20 +108,22 @@
     
     if (requestError)
 	{
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not send to server" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+		alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not send to server" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}
 	else if (response)
 	{
         
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sent" message:@"Message sent successfully" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+           /* alert = [[UIAlertView alloc] initWithTitle:@"Sent" message:@"Message sent successfully" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             [alert show];
-            [alert release];
+            [alert release];*/
+        [self dismissModalViewControllerAnimated:YES];
             
         }
     
 }
+
 
 - (void)viewDidUnload
 {

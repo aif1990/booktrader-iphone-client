@@ -96,7 +96,7 @@
     cell.frame = CGRectMake(120, 33, size.width, size.height);
     //cell.autoresizesSubviews = YES;
     
-    NSLog(@"text:%@", self.convs.body);
+    //NSLog(@"text:%@", self.convs.body);
     
 	//[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     return cell;

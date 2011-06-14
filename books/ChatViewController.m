@@ -30,7 +30,9 @@
 
 -(void)viewDidLoad{
     
-     [super viewDidLoad];
+    [super viewDidLoad];
+    self.list = [[NSMutableDictionary alloc] init];
+    self.keys = [[NSMutableArray alloc] init];
     
 }
 
@@ -39,9 +41,6 @@
     
     if(username == NULL)
         username = @"nonExistingUser";
-    
-    self.list = [[NSMutableDictionary alloc] init];
-    self.keys = [[NSMutableArray alloc] init];
     
     
     NSString *nurl = @"http://abstractbinary.org:6543/messages/list?format=json";
@@ -63,8 +62,8 @@
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
         
-        NSLog(@"%@", username);
-        NSLog(@"%@",[data objectForKey:@"status"]);
+       // NSLog(@"%@", username);
+        //NSLog(@"%@",[data objectForKey:@"status"]);
         
         UIAlertView* alertView = nil; 
         
@@ -78,7 +77,7 @@
         }
     } else {
         
-        
+        NSLog(@"data este %@", data);
         NSDictionary* conversations = [data objectForKey:@"conversations"];
         NSString* user;
         NSDictionary* item;
@@ -103,7 +102,7 @@
             
             while (item = (NSDictionary*) [enums nextObject]) {
                 
-                NSLog(@"creez vectorul");
+                NSLog(@"creez vectorul%@", self.list);
                 
                 [[self.list valueForKey:user] addObject:[Conversations productWithType:[item objectForKey:@"date"] body:[item objectForKey:@"body"] recipient:[item objectForKey:@"recipient"] sender:[item objectForKey:@"sender"] subject:[item objectForKey:@"subject"]]];
                 
