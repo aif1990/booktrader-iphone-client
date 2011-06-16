@@ -15,6 +15,9 @@
 #import "Conversations.h"
 #import "LoginView.h"
 #import "JSON.h"
+#import "UIKit/UIKit.h"
+#import "QuartzCore/QuartzCore.h"
+
 
 @implementation NewChatConversation
 
@@ -24,7 +27,14 @@
 @synthesize loginView;
 @synthesize username;
 @synthesize convers;
+@synthesize scrollView;
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    
+    [self.scrollView flashScrollIndicators];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,9 +42,99 @@
     //NSLog(@"conversations' array %@", self.convers);
     
     
-    [self.TableView reloadData];
+    //[self.TableView reloadData];
     
-    self.TableView.scrollEnabled = YES;
+    //self.TableView.scrollEnabled = YES;
+     
+    NSEnumerator *enums = [self.convers objectEnumerator];
+    Conversations *item;
+    
+    CGFloat margine=0;
+    
+    while(item = [enums nextObject]) {
+        
+       // NSLog(@"object %@", item);
+        //NSLog(@"body %@", item.body);
+
+        UIView *subview = [[UIView alloc] init];
+        
+        UILabel *txt = [[UILabel alloc] init] ;
+        
+       // UITextField *txt = [[UITextField alloc] init];
+                
+        //UILabel *txt = [[UILabel alloc] initWithFrame:CGRectMake(0, margine, txt.frame.size.width, txt.frame.size.height)];
+        
+        txt.lineBreakMode = UILineBreakModeWordWrap;
+        txt.numberOfLines = 0;
+        
+       // txt.backgroundColor = [UIColor redColor];
+        
+        //txt.editable = FALSE;
+        
+        char c;
+        float nr=0;
+        
+        for (c=0; c< [item.body length]; c++)
+            if ([item.body characterAtIndex:c] == '\n')
+                nr++;
+        
+        NSLog(@"new lines %d", nr);
+        
+        txt.text = item.body;
+        
+        float nb = [item.body length];
+        
+        NSLog(@"nr caract. %.0f", nb);
+        
+        [subview addSubview:txt];
+        
+        [txt sizeToFit];
+        
+        int hg = (nb/45.0f + 0.5f + nr)*35.0f;
+        
+        if(hg == 0)
+            hg = 35;
+        
+        txt.frame = CGRectMake(0, 0, scrollView.frame.size.width, hg);
+        
+        NSLog(@"%g", txt.frame.size.width);
+        
+                
+        //subview.backgroundColor = [UIColor redColor];
+        
+        //subview.layer.borderColor = [UIColor redColor].CGColor;
+        
+        subview.backgroundColor = [UIColor clearColor];
+        subview.backgroundColor = [UIColor redColor];
+        
+        [subview.layer setBorderColor:[UIColor redColor]];
+        
+        //subview.layer.borderWidth = 3.0f;
+        
+        [subview.layer setBorderWidth:3.0f];
+        [subview.layer display];
+        
+        [subview sizeToFit];
+        subview.frame = CGRectMake(0, margine, subview.frame.size.width, subview.frame.size.height);
+        
+        NSLog(@"subview %g:", txt.frame.size.height);
+        
+       [self.scrollView addSubview:subview];
+        
+        //[self.scrollView addSubview:txt];
+        
+        [txt setNeedsDisplay];
+        
+        margine += txt.frame.size.height+7;
+        
+    }
+    
+    [self.scrollView setNeedsDisplay];
+    
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width, margine);
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.showsVerticalScrollIndicator = YES;
     
 	
 }
@@ -61,7 +161,7 @@
  }*/
 
 
-// Customize the number of rows in the table view.
+/*// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //NSLog(@"count = %d\n", self.books.count);
     return [self.convers count];
@@ -172,8 +272,8 @@
 - (void)dealloc {
     
     
-    [TableView release];
-    [books release];
+    //[TableView release];
+   // [books release];
     [convers release];
     [super dealloc];
     

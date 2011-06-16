@@ -22,6 +22,7 @@
 		9A140111139B9F7600BAB51E /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A140106139B9F7600BAB51E /* SBJsonStreamWriterState.m */; };
 		9A140112139B9F7600BAB51E /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A140108139B9F7600BAB51E /* SBJsonTokeniser.m */; };
 		9A140113139B9F7600BAB51E /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A14010A139B9F7600BAB51E /* SBJsonWriter.m */; };
+		9A14588913A81C120035D0C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A14588813A81C120035D0C0 /* QuartzCore.framework */; };
 		9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B8313A00F0600AFF2A2 /* NewDataController.m */; };
 		9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B8413A00F0600AFF2A2 /* NewDataController.xib */; };
 		9A2C58BF13A68B5400B4BC09 /* talkpeople.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */; };
@@ -111,6 +112,7 @@
 		9A140108139B9F7600BAB51E /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
 		9A140109139B9F7600BAB51E /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		9A14010A139B9F7600BAB51E /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9A14588813A81C120035D0C0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS4.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		9A241B8213A00F0500AFF2A2 /* NewDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDataController.h; sourceTree = "<group>"; };
 		9A241B8313A00F0600AFF2A2 /* NewDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDataController.m; sourceTree = "<group>"; };
 		9A241B8413A00F0600AFF2A2 /* NewDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDataController.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A14588913A81C120035D0C0 /* QuartzCore.framework in Frameworks */,
 				9AE200401399712E002D5E97 /* CoreFoundation.framework in Frameworks */,
 				9AEA4DF513964F1700C5BE43 /* CoreGraphics.framework in Frameworks */,
 				9AEA4DF113964F1700C5BE43 /* UIKit.framework in Frameworks */,
@@ -255,6 +258,7 @@
 		9AEA4DEF13964F1700C5BE43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9A14588813A81C120035D0C0 /* QuartzCore.framework */,
 				9AE2003F1399712E002D5E97 /* CoreFoundation.framework */,
 				9AEA4DF013964F1700C5BE43 /* UIKit.framework */,
 				9AEA4DF213964F1700C5BE43 /* Foundation.framework */,

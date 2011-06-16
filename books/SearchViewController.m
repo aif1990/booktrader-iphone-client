@@ -56,10 +56,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
-    // save the state of the search UI so that it can be restored if the view is re-created
-   /* self.searchWasActive = [self.searchDisplayController isActive];
-    self.savedSearchTerm = [self.searchDisplayController.searchBar text];
-    self.savedScopeButtonIndex = [self.searchDisplayController.searchBar selectedScopeButtonIndex];*/
+    
 }
 
 - (void)dealloc
@@ -118,7 +115,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //UIViewController *detailsViewController = [[UIViewController alloc] init];
     
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.

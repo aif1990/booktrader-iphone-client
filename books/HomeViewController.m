@@ -174,10 +174,6 @@
         NSMutableArray *wanted = (NSMutableArray*) [data objectForKey:@"want"];
         NSMutableArray *owned = (NSMutableArray*) [data objectForKey:@"owned"];
         
-       /* NSString *intro1 = @"You have ";
-        NSInteger *nb = [owned count];
-        NSString *end1 = @" books in your collection";*/
-        
         if ([owned count] >1) {
             NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection*", [owned count]]; 
             ownedBooksNb.text = txt1;

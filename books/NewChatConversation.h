@@ -12,15 +12,17 @@
 @class Conversations;
 @class LoginView;
 
-@interface NewChatConversation : UIViewController <UITableViewDelegate,UITableViewDataSource> {
+@interface NewChatConversation : UIViewController<UIScrollViewDelegate> {
 	
 	IBOutlet UITableView *TableView;
 	NSMutableArray *books;
     Conversations *convs;
 	LoginView *loginView;
     NSMutableArray			*convers;
+    IBOutlet UIScrollView *scrollView;
     
 }
+@property (nonatomic, retain) UIScrollView *scrollView;
 @property (nonatomic, retain) NSMutableArray *books;
 @property (nonatomic, retain) UITableView *TableView;
 @property (nonatomic, retain) Conversations *convs;

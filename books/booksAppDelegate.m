@@ -109,23 +109,6 @@
 	return YES;
 }
 
-
-/*
- // Optional UITabBarControllerDelegate method
- - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
- }
- */
-
-/*
- // Optional UITabBarControllerDelegate method
- - (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed {
- }
- */
-/*- (void)applicationWillTerminate:(UIApplication *)application {
-	// Save data if appropriate
-	// Close the database here.
-}*/
-
 - (void)dealloc {
 
     [tabBarController release];

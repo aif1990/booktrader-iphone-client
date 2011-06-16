@@ -124,6 +124,11 @@
     
 }
 
+-(IBAction)back {
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
 
 - (void)viewDidUnload
 {
