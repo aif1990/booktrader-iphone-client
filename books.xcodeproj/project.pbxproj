@@ -29,6 +29,7 @@
 		9A2C58C413A6A2F300B4BC09 /* NewChatConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2C58C213A6A2F200B4BC09 /* NewChatConversation.m */; };
 		9A2C58C513A6A2F300B4BC09 /* NewChatConversation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C58C313A6A2F300B4BC09 /* NewChatConversation.xib */; };
 		9A79002913A17069003A9C2A /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A79002813A17069003A9C2A /* Entitlements.plist */; };
+		9AA83D3C13ABCEA6005FDC56 /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA83D3B13ABCEA6005FDC56 /* MyLabel.m */; };
 		9AB0EFCB1396E0FE00A8A687 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */; };
 		9AB0F00B1397F44F00A8A687 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB0F0091397F44E00A8A687 /* LoginView.m */; };
 		9AB0F00C1397F44F00A8A687 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AB0F00A1397F44F00A8A687 /* LoginView.xib */; };
@@ -123,6 +124,8 @@
 		9A2C58C213A6A2F200B4BC09 /* NewChatConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChatConversation.m; sourceTree = "<group>"; };
 		9A2C58C313A6A2F300B4BC09 /* NewChatConversation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewChatConversation.xib; sourceTree = "<group>"; };
 		9A79002813A17069003A9C2A /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		9AA83D3A13ABCEA6005FDC56 /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		9AA83D3B13ABCEA6005FDC56 /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
 		9AB0EFC91396E0FE00A8A687 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		9AB0EFCA1396E0FE00A8A687 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		9AB0F0081397F44E00A8A687 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				9A2C58C113A6A2F200B4BC09 /* NewChatConversation.h */,
 				9A2C58C213A6A2F200B4BC09 /* NewChatConversation.m */,
 				9A2C58C313A6A2F300B4BC09 /* NewChatConversation.xib */,
+				9AA83D3A13ABCEA6005FDC56 /* MyLabel.h */,
+				9AA83D3B13ABCEA6005FDC56 /* MyLabel.m */,
 			);
 			path = books;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				9A05E50413A3B375005ACEFD /* NewWanted.m in Sources */,
 				9AF7238113A52D4400470A1E /* Conversations.m in Sources */,
 				9A2C58C413A6A2F300B4BC09 /* NewChatConversation.m in Sources */,
+				9AA83D3C13ABCEA6005FDC56 /* MyLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

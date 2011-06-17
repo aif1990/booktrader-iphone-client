@@ -17,6 +17,7 @@
 #import "JSON.h"
 #import "UIKit/UIKit.h"
 #import "QuartzCore/QuartzCore.h"
+#import "MyLabel.h"
 
 
 @implementation NewChatConversation
@@ -51,7 +52,7 @@
     NSEnumerator *enums = [self.convers objectEnumerator];
     Conversations *item;
     
-    CGFloat margine=0;
+    CGFloat margine=9;
     
     while(item = [enums nextObject]) {
         
@@ -61,6 +62,8 @@
         UIView *subview = [[UIView alloc] init];
         
         UILabel *txt = [[UILabel alloc] init] ;
+        
+        //MyLabel *txt = [[MyLabel alloc] init];
         
        // UITextField *txt = [[UITextField alloc] init];
                 
@@ -87,6 +90,7 @@
         float nb = [item.body length];
         
         [subview addSubview:txt];
+        //[subview insertSubview:txt aboveSubview:subview];
         
         [txt sizeToFit];
         
@@ -95,7 +99,8 @@
         if (hg == 0)
             hg = 30;
         
-        txt.frame = CGRectMake(0, 0, scrollView.frame.size.width, hg);
+        txt.frame = CGRectMake(4, 0, scrollView.frame.size.width-8, hg);
+
         
         [subview sizeToFit];
         subview.frame = CGRectMake(0, margine, subview.frame.size.width, subview.frame.size.height);
@@ -110,87 +115,29 @@
        /// UIImage *image = [UIImage imageNamed:@"border.png"];
         
         
-        NSLog(@"%@", username);
-        NSLog(@"sender:%@", item.sender);
+        //NSLog(@"%@", username);
+        //NSLog(@"sender:%@", item.sender);
         
         if ([item.sender compare:username] == 0) {
+            
+            txt.layer.borderColor = [[UIColor colorWithRed:(204.0/255.0) green:(167.0/255.0) blue:(207.0/255.0) alpha:1] CGColor];
+            txt.layer.borderWidth = 1;
+            txt.layer.cornerRadius = 8;
+            
         
             txt.backgroundColor = [UIColor clearColor]; 
-            txt.backgroundColor = [UIColor colorWithRed:(255.0/255.0) green:(235.0/255.0) blue:(235.0/255.0) alpha:0.8];
+            txt.backgroundColor = [UIColor colorWithRed:(234.0/255.0) green:(197.0/255.0) blue:(237.0/255.0) alpha:1];
             
         } else {
             
+            txt.layer.borderColor = [[UIColor colorWithRed:(187.0/255.0) green:(225.0/255.0) blue:(139.0/255.0) alpha:1] CGColor];
+            txt.layer.borderWidth = 1;
+            txt.layer.cornerRadius = 8;
+            
             txt.backgroundColor = [UIColor clearColor];
-            txt.backgroundColor = [UIColor colorWithRed:(217.0/255.0) green:(255.0/255.0) blue:(169.0/255.0) alpha:0.8];
+            txt.backgroundColor = [UIColor colorWithRed:(217.0/255.0) green:(255.0/255.0) blue:(169.0/255.0) alpha:1];
             
         }
-        
-        ///txt.backgroundColor = [UIColor colorWithPatternImage:image];
-        
-       /// CGImageRef imgRef = [image CGImage];
-        
-        ///CGFloat width = CGImageGetWidth(imgRef);
-        ///CGFloat height = CGImageGetHeight(imgRef);
-        ///CGRect bounds = CGRectMake(0, 0, width, height);
-        ///CGSize size = bounds.size;
-        
-        ///CGAffineTransform transform = CGAffineTransformMakeScale(1.0, hg/height);
-        
-        //NSLog(@"height: %f, ours: %i", height, hg);
-        
-        ///UIGraphicsBeginImageContext(size);
-        ///CGContextRef context = UIGraphicsGetCurrentContext();
-        ///CGContextScaleCTM(context, 1.0, hg/height);
-        //CGContextConcatCTM(context, transform);
-        //CGImageRef cgImage = CGBitmapContextCreateImage(context);
-        //UIImage* uiImage = [[UIImage imageWithCGImage:cgImage] retain];
-        ///CGContextDrawImage(context, CGRectMake(0, 0, width, hg), imgRef);
-        //[image drawInRect:bounds];
-        ///UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-        ///UIGraphicsEndImageContext();  
-        
-        ///txt.backgroundColor = [UIColor colorWithPatternImage:img];
-        
-        //UIImageView *backg = [[UIImageView alloc] initWithImage:img];
-        
-        //[subview insertSubview:backg belowSubview:txt];
-        
-        //labelBackground.contentMode = UIViewContentModeScaleAspectFill;
-        
-        //[labelBackground release];
-               
-        
-       // txt.backgroundColor = [UIColor clearColor];
-       // txt.backgroundColor = [UIColor grayColor];
-        
-        //txt.layer.borderColor = [UIColor blackColor];
-        //txt.layer.borderWidth  = 3.0f;
-        //[txt.layer display];
-        
-        
-        
-       // NSLog(@"nr caract. %.0f", nb);
-        
-                //labelBackground.frame = CGRectMake(0, 0, scrollView.frame.size.width, hg);
-        
-        //NSLog(@"%g", txt.frame.size.width);
-        
-                
-        //subview.backgroundColor = [UIColor redColor];
-        
-        //subview.layer.borderColor = [UIColor redColor].CGColor;
-        
-       // subview.backgroundColor = [UIColor clearColor];
-       // subview.backgroundColor = [UIColor redColor];
-        
-        //[subview.layer setBorderColor:[UIColor redColor]];
-        
-        //subview.layer.borderWidth = 3.0f;
-        
-       // [subview.layer setBorderWidth:3.0f];
-       // [subview.layer display];
-        
-        
         
        // NSLog(@"subview %g:", txt.frame.size.height);
         
@@ -200,7 +147,7 @@
         
         [txt setNeedsDisplay];
         
-        margine += txt.frame.size.height+7;
+        margine += txt.frame.size.height+9;
         
     }
     
