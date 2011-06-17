@@ -11,6 +11,7 @@
 @class BookDetailViewController;
 @class LoginView;
 @class BooksViewController;
+@class booksAppDelegate;
 
 @interface HomeViewController : UIViewController <UIActionSheetDelegate> {
     
@@ -20,6 +21,7 @@
     IBOutlet BooksViewController *booksViewController;
     IBOutlet UIImageView *imgView;
     IBOutlet UIImageView *logIm;
+    IBOutlet booksAppDelegate *book;
     
 }
 
@@ -28,6 +30,8 @@
 - (void)openLoginView;
 - (void)openRegisterView;
 - (void)Logout;
+
+@property(nonatomic, retain) booksAppDelegate *book;
 
 @property (nonatomic, retain) UIImageView *logIm;
 @property (nonatomic, retain) UIImageView *imgView;

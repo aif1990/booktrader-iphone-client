@@ -65,6 +65,8 @@
 		9AEA4E4713965FA200C5BE43 /* WantedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AEA4E4513965FA200C5BE43 /* WantedViewController.xib */; };
 		9AF1BE8D1398ED0E005E7365 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */; };
 		9AF1BE8E1398ED0E005E7365 /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */; };
+		9AF3E6E313AA8D0400BD3B4F /* FP.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF3E6E213AA8D0400BD3B4F /* FP.jpg */; };
+		9AF3E6E613AAA78000BD3B4F /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AF3E6E513AAA78000BD3B4F /* border.png */; };
 		9AF7235413A4D00100470A1E /* Vista_login1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235313A4D00100470A1E /* Vista_login1.JPG */; };
 		9AF7235D13A4D92400470A1E /* apple-inc1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235C13A4D92400470A1E /* apple-inc1.jpg */; };
 		9AF7235F13A4D98D00470A1E /* login_apple.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9AF7235E13A4D98D00470A1E /* login_apple.jpg */; };
@@ -172,6 +174,8 @@
 		9AF1BE8A1398ED0E005E7365 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		9AF1BE8B1398ED0E005E7365 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		9AF1BE8C1398ED0E005E7365 /* ChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatViewController.xib; sourceTree = "<group>"; };
+		9AF3E6E213AA8D0400BD3B4F /* FP.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = FP.jpg; path = ../../FP.jpg; sourceTree = "<group>"; };
+		9AF3E6E513AAA78000BD3B4F /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = border.png; path = ../../border.png; sourceTree = "<group>"; };
 		9AF7235313A4D00100470A1E /* Vista_login1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Vista_login1.JPG; sourceTree = "<group>"; };
 		9AF7235C13A4D92400470A1E /* apple-inc1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "apple-inc1.jpg"; sourceTree = "<group>"; };
 		9AF7235E13A4D98D00470A1E /* login_apple.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_apple.jpg; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 		9AEA4DE113964F1700C5BE43 = {
 			isa = PBXGroup;
 			children = (
+				9AF3E6E513AAA78000BD3B4F /* border.png */,
+				9AF3E6E213AA8D0400BD3B4F /* FP.jpg */,
 				9A79002813A17069003A9C2A /* Entitlements.plist */,
 				9AEA4DF613964F1700C5BE43 /* books */,
 				9AEA4E1C13964F1700C5BE43 /* booksTests */,
@@ -463,6 +469,8 @@
 				9AF7237513A5117A00470A1E /* 08-chat.png in Resources */,
 				9A2C58BF13A68B5400B4BC09 /* talkpeople.jpg in Resources */,
 				9A2C58C513A6A2F300B4BC09 /* NewChatConversation.xib in Resources */,
+				9AF3E6E313AA8D0400BD3B4F /* FP.jpg in Resources */,
+				9AF3E6E613AAA78000BD3B4F /* border.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

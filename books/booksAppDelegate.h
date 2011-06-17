@@ -24,9 +24,13 @@
     IBOutlet SearchViewController *searchViewController;
     NSArray *jsonArray;
     
+    NSString *username;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
+
+@property (nonatomic, retain) NSString *username;
 
 @property (nonatomic, retain) NSMutableArray *listContent;
 @property (nonatomic, retain) NSArray *jsonArray;

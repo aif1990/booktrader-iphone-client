@@ -89,6 +89,7 @@
 
 - (IBAction)login {
     
+    //check the crashing problem when connected to a wi-fi but without password.
     
     NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/login"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -110,6 +111,7 @@
     NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
     NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
+    NSLog(@"%s", responseString);
     
     if (requestError)
 	{

@@ -27,12 +27,18 @@
 @synthesize list;
 @synthesize keys;
 
+@synthesize book;
+
 
 -(void)viewDidLoad{
     
     [super viewDidLoad];
     self.list = [[NSMutableDictionary alloc] init];
     self.keys = [[NSMutableArray alloc] init];
+    
+    username = book.username;
+    
+    NSLog(@"chatview: %@", username);
     
 }
 
@@ -174,6 +180,8 @@
     
     
     settings.convers = [self.list valueForKey:[self.keys objectAtIndex:indexPath.row]];
+    
+    settings.username = username;
     
     //settings.collectionViewController = self;
     

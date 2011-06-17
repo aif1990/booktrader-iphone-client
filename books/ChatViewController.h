@@ -11,6 +11,7 @@
 
 @class Conversations;
 @class LoginView;
+@class booksAppDelegate;
 
 @interface ChatViewController : UIViewController <UITableViewDelegate,UITableViewDataSource> {
 	
@@ -22,7 +23,12 @@
     NSMutableDictionary		*list;
     NSMutableArray *keys;
     
+    IBOutlet booksAppDelegate *book;
+    
+    
 }
+@property(nonatomic, retain) booksAppDelegate *book;
+
 @property (nonatomic, retain) NSMutableArray *books;
 @property (nonatomic, retain) UITableView *TableView;
 @property (nonatomic, retain) Conversations *conversation;

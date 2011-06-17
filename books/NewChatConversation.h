@@ -20,6 +20,7 @@
 	LoginView *loginView;
     NSMutableArray			*convers;
     IBOutlet UIScrollView *scrollView;
+    NSString *username;
     
 }
 @property (nonatomic, retain) UIScrollView *scrollView;

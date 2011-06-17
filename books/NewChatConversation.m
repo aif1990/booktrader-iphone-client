@@ -34,6 +34,8 @@
     
     [self.scrollView flashScrollIndicators];
     
+    NSLog(@"did appear: %@", username);
+    
 }
 
 - (void)viewDidLoad {
@@ -77,47 +79,120 @@
         for (c=0; c< [item.body length]; c++)
             if ([item.body characterAtIndex:c] == '\n')
                 nr++;
-        
-        NSLog(@"new lines %d", nr);
+       // 
+       // NSLog(@"new lines %d", nr);
         
         txt.text = item.body;
         
         float nb = [item.body length];
         
-        NSLog(@"nr caract. %.0f", nb);
-        
         [subview addSubview:txt];
         
         [txt sizeToFit];
         
-        int hg = (nb/45.0f + 0.5f + nr)*35.0f;
+        int hg = (int)(nb/45.0f + 0.5f + nr)*30;
         
-        if(hg == 0)
-            hg = 35;
+        if (hg == 0)
+            hg = 30;
         
         txt.frame = CGRectMake(0, 0, scrollView.frame.size.width, hg);
         
-        NSLog(@"%g", txt.frame.size.width);
+        [subview sizeToFit];
+        subview.frame = CGRectMake(0, margine, subview.frame.size.width, subview.frame.size.height);
+
+        
+        //UIImageView *labelBackground = [[UIImageView alloc] 
+                                        //initWithImage:[UIImage imageNamed:@"FP.jpg"]];
+        //[txt addSubview:labelBackground];
+            
+       // [subview insertSubview:labelBackground belowSubview:txt];
+        
+       /// UIImage *image = [UIImage imageNamed:@"border.png"];
+        
+        
+        NSLog(@"%@", username);
+        NSLog(@"sender:%@", item.sender);
+        
+        if ([item.sender compare:username] == 0) {
+        
+            txt.backgroundColor = [UIColor clearColor]; 
+            txt.backgroundColor = [UIColor colorWithRed:(255.0/255.0) green:(235.0/255.0) blue:(235.0/255.0) alpha:0.8];
+            
+        } else {
+            
+            txt.backgroundColor = [UIColor clearColor];
+            txt.backgroundColor = [UIColor colorWithRed:(217.0/255.0) green:(255.0/255.0) blue:(169.0/255.0) alpha:0.8];
+            
+        }
+        
+        ///txt.backgroundColor = [UIColor colorWithPatternImage:image];
+        
+       /// CGImageRef imgRef = [image CGImage];
+        
+        ///CGFloat width = CGImageGetWidth(imgRef);
+        ///CGFloat height = CGImageGetHeight(imgRef);
+        ///CGRect bounds = CGRectMake(0, 0, width, height);
+        ///CGSize size = bounds.size;
+        
+        ///CGAffineTransform transform = CGAffineTransformMakeScale(1.0, hg/height);
+        
+        //NSLog(@"height: %f, ours: %i", height, hg);
+        
+        ///UIGraphicsBeginImageContext(size);
+        ///CGContextRef context = UIGraphicsGetCurrentContext();
+        ///CGContextScaleCTM(context, 1.0, hg/height);
+        //CGContextConcatCTM(context, transform);
+        //CGImageRef cgImage = CGBitmapContextCreateImage(context);
+        //UIImage* uiImage = [[UIImage imageWithCGImage:cgImage] retain];
+        ///CGContextDrawImage(context, CGRectMake(0, 0, width, hg), imgRef);
+        //[image drawInRect:bounds];
+        ///UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+        ///UIGraphicsEndImageContext();  
+        
+        ///txt.backgroundColor = [UIColor colorWithPatternImage:img];
+        
+        //UIImageView *backg = [[UIImageView alloc] initWithImage:img];
+        
+        //[subview insertSubview:backg belowSubview:txt];
+        
+        //labelBackground.contentMode = UIViewContentModeScaleAspectFill;
+        
+        //[labelBackground release];
+               
+        
+       // txt.backgroundColor = [UIColor clearColor];
+       // txt.backgroundColor = [UIColor grayColor];
+        
+        //txt.layer.borderColor = [UIColor blackColor];
+        //txt.layer.borderWidth  = 3.0f;
+        //[txt.layer display];
+        
+        
+        
+       // NSLog(@"nr caract. %.0f", nb);
+        
+                //labelBackground.frame = CGRectMake(0, 0, scrollView.frame.size.width, hg);
+        
+        //NSLog(@"%g", txt.frame.size.width);
         
                 
         //subview.backgroundColor = [UIColor redColor];
         
         //subview.layer.borderColor = [UIColor redColor].CGColor;
         
-        subview.backgroundColor = [UIColor clearColor];
-        subview.backgroundColor = [UIColor redColor];
+       // subview.backgroundColor = [UIColor clearColor];
+       // subview.backgroundColor = [UIColor redColor];
         
-        [subview.layer setBorderColor:[UIColor redColor]];
+        //[subview.layer setBorderColor:[UIColor redColor]];
         
         //subview.layer.borderWidth = 3.0f;
         
-        [subview.layer setBorderWidth:3.0f];
-        [subview.layer display];
+       // [subview.layer setBorderWidth:3.0f];
+       // [subview.layer display];
         
-        [subview sizeToFit];
-        subview.frame = CGRectMake(0, margine, subview.frame.size.width, subview.frame.size.height);
         
-        NSLog(@"subview %g:", txt.frame.size.height);
+        
+       // NSLog(@"subview %g:", txt.frame.size.height);
         
        [self.scrollView addSubview:subview];
         

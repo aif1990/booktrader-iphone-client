@@ -22,6 +22,8 @@
 @synthesize navigationController;
 @synthesize searchViewController;
 
+@synthesize username;
+
 @synthesize listContent;
 @synthesize jsonArray;
 

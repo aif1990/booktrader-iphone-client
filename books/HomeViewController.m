@@ -23,6 +23,8 @@
 @synthesize imgView;
 @synthesize logIm;
 
+@synthesize book;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     
@@ -128,6 +130,9 @@
         NSString *user = [@"Welcome, " stringByAppendingString:loginView.username];
         welcomeMessage.text = [user stringByAppendingString:@"!"];
         booksViewController.username = loginView.username;
+        
+        book.username = loginView.username;
+        NSLog(@"homeview:%@", book.username);
         
         //gravatar
         
