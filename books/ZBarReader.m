@@ -44,28 +44,28 @@
                        to: 0];
     
     // present and release the controller
-   /*/// [self presentModalViewController: reader
+    [self presentModalViewController: reader
                             animated: YES];
-    [reader release];*/
+    [reader release];
     
-    [self imagePickerController:reader didFinishPickingMediaWithInfo:nil];
+   // [self imagePickerController:reader didFinishPickingMediaWithInfo:nil];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
     // ADD: get the decode results
-   /*/// id<NSFastEnumeration> results =
+    id<NSFastEnumeration> results =
     [info objectForKey: ZBarReaderControllerResults];
     ZBarSymbol *symbol = nil;
     for(symbol in results)
         // EXAMPLE: just grab the first barcode
-        break;*/
+        break;
     
     
     // EXAMPLE: do something useful with the barcode data
     //resultText.text = symbol.data;
-    resultText.text = @"9780262011532";
+    //resultText.text = @"9780262011532";
     
     
     // EXAMPLE: do something useful with the barcode image
@@ -73,12 +73,11 @@
     //[info objectForKey: UIImagePickerControllerOriginalImage];
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
-   // [reader dismissModalViewControllerAnimated: YES];
-    
+    [reader dismissModalViewControllerAnimated: YES];
     
     
     NSString *first = @"http://abstractbinary.org:6543/search?query=";
-    NSString *second = [first stringByAppendingString:[self urlEncodeValue:@"9780262011532"]];
+    NSString *second = [first stringByAppendingString:[self urlEncodeValue:symbol.data]];
     NSString *nurl = [second stringByAppendingString:@"&type=books&format=json&Search=Search&limit=40"];
     
     NSURL *url = [NSURL URLWithString:nurl];

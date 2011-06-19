@@ -31,7 +31,7 @@
     
     NSLog(@"Am incarcat view");
     
-    
+        
 	// create a filtered list that will contain products for the search results table.
     self.listContent = [NSMutableArray arrayWithCapacity:100];
 	self.filteredListContent = [NSMutableArray arrayWithCapacity:[self.listContent count]];
@@ -50,6 +50,28 @@
     self.searchDisplayController.searchBar.scopeButtonTitles = nil;
     self.searchDisplayController.searchBar.scopeButtonTitles = [NSArray arrayWithObjects:@"Title",@"Author",@"Publisher", nil];
     self.searchDisplayController.searchBar.showsScopeBar = YES;
+    
+    NSLog(@"am aparut!:");
+    
+    if (product != nil) {
+        
+        NewDataController *settings = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
+        
+        settings.product = product;
+        
+        
+        settings.title = product.title;
+        
+        product = nil;
+        
+        [[self navigationController] pushViewController:settings animated:YES];
+        [settings release];    
+        
+        
+    }
+
+    
+    
    // self.searchDisplayController.searchBar.selectedScopeButtonIndex = 0;
     
 }
@@ -99,7 +121,9 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the cell using the filtered content, otherwise use the main list.
 	 */
-	product = nil;
+    Product *product;
+    
+	//product = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         product = [self.filteredListContent objectAtIndex:indexPath.row];
@@ -119,6 +143,10 @@
 	/*
 	 If the requesting table view is the search display controller's table view, configure the next view controller using the filtered content, otherwise use the main list.
 	 */
+    NSLog(@"am facut nil1");
+    
+    Product *product;
+    
 	product = nil;
 	if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
@@ -131,6 +159,10 @@
     
     
     settings.title = product.title;
+    
+    
+    NSLog(@"am facut nil2");
+    product = nil;
     
     [[self navigationController] pushViewController:settings animated:YES];
     [settings release];

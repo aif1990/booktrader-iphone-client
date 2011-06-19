@@ -95,23 +95,23 @@
                        to: 0];
     
     // present and release the controller
-    /*/// [self presentModalViewController: reader
+     [self.navigationController presentModalViewController: reader
      animated: YES];
-     [reader release];*/
+     [reader release];
     
-    [self imagePickerController:reader didFinishPickingMediaWithInfo:nil];
+    //[self imagePickerController:reader didFinishPickingMediaWithInfo:nil];
 }
 
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
     // ADD: get the decode results
-    /*/// id<NSFastEnumeration> results =
+     id<NSFastEnumeration> results =
      [info objectForKey: ZBarReaderControllerResults];
      ZBarSymbol *symbol = nil;
      for(symbol in results)
      // EXAMPLE: just grab the first barcode
-     break;*/
+     break;
     
     
     // EXAMPLE: do something useful with the barcode data
@@ -124,12 +124,12 @@
     //[info objectForKey: UIImagePickerControllerOriginalImage];
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    // [reader dismissModalViewControllerAnimated: YES];
+     [reader dismissModalViewControllerAnimated: YES];
     
     
     
     NSString *first = @"http://abstractbinary.org:6543/search?query=";
-    NSString *second = [first stringByAppendingString:[self urlEncodeValue:@"9780262011532"]];
+    NSString *second = [first stringByAppendingString:[self urlEncodeValue:symbol.data]];
     NSString *nurl = [second stringByAppendingString:@"&type=books&format=json&Search=Search&limit=40"];
     
     NSURL *url = [NSURL URLWithString:nurl];
@@ -158,19 +158,12 @@
     item = (NSDictionary*)[enumerator nextObject];
     product = [Product productWithType:[item objectForKey:@"title"] author:[item objectForKey:@"authors"] publisher:[item objectForKey:@"publisher"] url:[item objectForKey:@"thumbnail"] identifier:[item objectForKey:@"identifier"]];
     
-    
+    NSLog(@"am setat produsul %@:", product.title);
     
     // product = [self.listContent objectAtIndex:0];
     
-    NewDataController *settingDetail = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
-    settingDetail.title = product.title;
+    searchViewController.product = product;
     
-    NSLog(@"%@", product.title);
-    
-    settingDetail.product = product;
-    //[self.navigationController pushViewController:settingDetail animated:YES];
-    [self.navigationController presentModalViewController:settingDetail animated:YES];
-    [settingDetail release];
     
     
 }

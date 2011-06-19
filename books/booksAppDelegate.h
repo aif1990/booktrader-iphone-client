@@ -34,8 +34,6 @@
     
     NSString *username;
     
-    
-    SearchViewController *searchView;
     Product *product;
     
 }
@@ -43,9 +41,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) NSString *username;
-
-
-@property (nonatomic, retain) SearchViewController *searchView;
 @property (nonatomic, retain) Product *product;
 
 @property (nonatomic, retain) NSMutableArray *listContent;
