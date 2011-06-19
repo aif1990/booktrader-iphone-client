@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@class SearchViewController;
 @class CollectionViewController;
+@class Product;
 
 @interface NewDataController : UIViewController {
     
@@ -17,15 +17,16 @@
     IBOutlet UIImageView *imageView, *imageView2;
     IBOutlet UISegmentedControl *segmentedControl;
     
-    SearchViewController *searchViewController;
     CollectionViewController *collectionViewController;
+    Product *product;
     
 }
 
+
+@property (nonatomic, retain) Product *product;
 @property (nonatomic, retain) UILabel *bookTitle, *bookAuthor, *bookPublisher;
 @property (nonatomic, retain) UISegmentedControl *segmentedControl;
 @property (nonatomic, retain) UIImageView *imageView,*imageView2;
-@property (nonatomic, retain) SearchViewController *searchViewController;
 @property (nonatomic, retain) CollectionViewController *collectionViewController;
 
 -(IBAction) segmentedControlIndexChanged;

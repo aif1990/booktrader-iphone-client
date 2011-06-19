@@ -127,8 +127,7 @@
     
     NewDataController *settings = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
     
-    
-    settings.searchViewController = self;
+    settings.product = product;
     
     
     settings.title = product.title;

@@ -7,7 +7,6 @@
 //
 
 #import "NewDataController.h"
-#import "SearchViewController.h"
 #import "BookDetailViewController.h"
 #import "NavigationController.h"
 #import "booksAppDelegate.h"
@@ -18,7 +17,7 @@
 
 @implementation NewDataController
 
-@synthesize bookTitle, searchViewController, bookAuthor, imageView, segmentedControl, collectionViewController, imageView2;
+@synthesize bookTitle, bookAuthor, imageView, segmentedControl, collectionViewController, imageView2, product;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,11 +47,11 @@
 
 - (void)viewDidLoad
 {
-    NSLog(@"%@", searchViewController.product.title);
+    NSLog(@"%@", product.title);
     
-    bookTitle.text = searchViewController.product.title;
+    bookTitle.text = product.title;
     
-    NSEnumerator *enums = [searchViewController.product.author objectEnumerator];
+    NSEnumerator *enums = [product.author objectEnumerator];
     
     NSString* author;
     
@@ -65,9 +64,9 @@
     }
     
     
-    NSLog(@"%@", searchViewController.product.url);
+    NSLog(@"%@", product.url);
     
-    NSURL *url = [NSURL URLWithString:searchViewController.product.url];
+    NSURL *url = [NSURL URLWithString:product.url];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
     [request setHTTPMethod:@"POST"];
@@ -84,7 +83,7 @@
     }    
     
     bookAuthor.text = bookAuthors;
-    bookPublisher.text = searchViewController.product.publisher;
+    bookPublisher.text = product.publisher;
     
     
     [super viewDidLoad];
@@ -122,7 +121,7 @@
     
     
     NSString *first = @"http://abstractbinary.org:6543/books/";
-    NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
+    NSString *second = [first stringByAppendingString:product.identifier];
     NSString *nurl = [second stringByAppendingString:@"/want?format=json"];
     
     NSURL *url = [NSURL URLWithString:nurl];
@@ -183,7 +182,7 @@
 -(IBAction)have {
     
     NSString *first = @"http://abstractbinary.org:6543/books/";
-    NSString *second = [first stringByAppendingString:searchViewController.product.identifier];
+    NSString *second = [first stringByAppendingString:product.identifier];
     NSString *nurl = [second stringByAppendingString:@"/have?format=json"];
     
     NSURL *url = [NSURL URLWithString:nurl];

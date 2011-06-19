@@ -58,14 +58,14 @@
     [info objectForKey: UIImagePickerControllerOriginalImage];
     
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissModalViewControllerAnimated: YES];
+    //[reader dismissModalViewControllerAnimated: YES];
     
     
-    //NewDataController *settingDetail = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
-   // settingDetail.title = @"titlu";
-    //[self.navigationController pushViewController:settingDetail animated:YES];
+    NewDataController *settingDetail = [[NewDataController alloc] initWithNibName:@"NewDataController" bundle:nil];
+    settingDetail.title = @"titlu";
+    [self.navigationController pushViewController:settingDetail animated:YES];
     //[self.navigationController presentModalViewController:settingDetail animated:YES];
-    //[settingDetail release];
+    [settingDetail release];
     
     
 }
