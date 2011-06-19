@@ -117,6 +117,12 @@
     }
  }
 
+-(IBAction) exit {
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
 -(IBAction)want {
     
     

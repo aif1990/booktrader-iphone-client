@@ -32,5 +32,6 @@
 -(IBAction) segmentedControlIndexChanged;
 -(IBAction) have;
 -(IBAction) want;
+-(IBAction) exit;
 
 @end
