@@ -9,11 +9,19 @@
 #import <UIKit/UIKit.h>
 #include "ZBarSDK/Headers/ZBarSDK/ZBarSDK.h"
 
+
+#import "ZBarReader.h"
+#import "NewDataController.h"
+#import "JSON.h"
+#import "Product.h"
+#include "ZBarSDK/Headers/ZBarSDK/ZBarSDK.h"
+
 @class CollectionViewController;
 @class WantedViewController;
 @class NavigationController;
 @class NewMessageView;
 @class SearchViewController;
+@class Product;
 
 @interface booksAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, ZBarReaderDelegate> {
     
@@ -26,11 +34,19 @@
     
     NSString *username;
     
+    
+    SearchViewController *searchView;
+    Product *product;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) NSString *username;
+
+
+@property (nonatomic, retain) SearchViewController *searchView;
+@property (nonatomic, retain) Product *product;
 
 @property (nonatomic, retain) NSMutableArray *listContent;
 @property (nonatomic, retain) NSArray *jsonArray;
@@ -39,6 +55,8 @@
 @property (nonatomic, retain) IBOutlet SearchViewController *searchViewController;
 
 - (IBAction)openNewMessageView;
-- (IBAction)searchBarcode;
+- (IBAction) scanButtonTapped;
+- (IBAction) exits;
+//- (IBAction)searchBarcode;
 
 @end
