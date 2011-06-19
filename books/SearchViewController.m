@@ -155,9 +155,9 @@
 {
    
     
-    NSString *first = @"http://abstractbinary.org:6543/books/search?query=";
+    NSString *first = @"http://abstractbinary.org:6543/search?query=";
     NSString *second = [first stringByAppendingString:[self urlEncodeValue:searchText]];
-    NSString *nurl = [second stringByAppendingString:@"&Search=Search&format=json&limit=40"];
+    NSString *nurl = [second stringByAppendingString:@"&type=books&format=json&Search=Search&limit=40"];
     
     NSURL *url = [NSURL URLWithString:nurl];
 
