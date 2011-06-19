@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#include "ZBarSDK/Headers/ZBarSDK/ZBarSDK.h"
 
 @class CollectionViewController;
 @class WantedViewController;
@@ -15,7 +15,7 @@
 @class NewMessageView;
 @class SearchViewController;
 
-@interface booksAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
+@interface booksAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate, ZBarReaderDelegate> {
     
 	UIWindow *window;
     UITabBarController *tabBarController;
@@ -39,5 +39,6 @@
 @property (nonatomic, retain) IBOutlet SearchViewController *searchViewController;
 
 - (IBAction)openNewMessageView;
+- (IBAction)searchBarcode;
 
 @end
