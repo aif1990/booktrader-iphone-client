@@ -25,6 +25,8 @@
 		9A14588913A81C120035D0C0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A14588813A81C120035D0C0 /* QuartzCore.framework */; };
 		9A241B8513A00F0600AFF2A2 /* NewDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A241B8313A00F0600AFF2A2 /* NewDataController.m */; };
 		9A241B8613A00F0600AFF2A2 /* NewDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A241B8413A00F0600AFF2A2 /* NewDataController.xib */; };
+		9A26A8E013AFCD810036C1A1 /* mr_t.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A26A8DF13AFCD810036C1A1 /* mr_t.png */; };
+		9A26A8E313AFCEC30036C1A1 /* mr_t1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A26A8E213AFCEC30036C1A1 /* mr_t1.png */; };
 		9A2C58BF13A68B5400B4BC09 /* talkpeople.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */; };
 		9A2C58C413A6A2F300B4BC09 /* NewChatConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2C58C213A6A2F200B4BC09 /* NewChatConversation.m */; };
 		9A2C58C513A6A2F300B4BC09 /* NewChatConversation.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2C58C313A6A2F300B4BC09 /* NewChatConversation.xib */; };
@@ -130,6 +132,8 @@
 		9A241B8213A00F0500AFF2A2 /* NewDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDataController.h; sourceTree = "<group>"; };
 		9A241B8313A00F0600AFF2A2 /* NewDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDataController.m; sourceTree = "<group>"; };
 		9A241B8413A00F0600AFF2A2 /* NewDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewDataController.xib; sourceTree = "<group>"; };
+		9A26A8DF13AFCD810036C1A1 /* mr_t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mr_t.png; path = ../mr_t.png; sourceTree = "<group>"; };
+		9A26A8E213AFCEC30036C1A1 /* mr_t1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mr_t1.png; sourceTree = "<group>"; };
 		9A2C58BE13A68B5400B4BC09 /* talkpeople.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = talkpeople.jpg; sourceTree = "<group>"; };
 		9A2C58C113A6A2F200B4BC09 /* NewChatConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewChatConversation.h; sourceTree = "<group>"; };
 		9A2C58C213A6A2F200B4BC09 /* NewChatConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewChatConversation.m; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 		9AEA4DE113964F1700C5BE43 = {
 			isa = PBXGroup;
 			children = (
+				9A26A8E213AFCEC30036C1A1 /* mr_t1.png */,
 				9ADA05F113AE4D48007E1714 /* libiconv.dylib */,
 				9ADA05EF13AE4D2D007E1714 /* CoreVideo.framework */,
 				9ADA05ED13AE4D25007E1714 /* CoreMedia.framework */,
@@ -488,6 +493,7 @@
 		9AEA4E1D13964F1700C5BE43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9A26A8DF13AFCD810036C1A1 /* mr_t.png */,
 				9AEA4E1E13964F1700C5BE43 /* booksTests-Info.plist */,
 				9AEA4E1F13964F1700C5BE43 /* InfoPlist.strings */,
 				9AEA4E2213964F1700C5BE43 /* booksTests-Prefix.pch */,
@@ -599,6 +605,8 @@
 				9AE25DA713AE5313002A2326 /* zbar-helpicons.png in Resources */,
 				9AE25DA813AE5313002A2326 /* zbar-samples.png in Resources */,
 				9AE25DB713AE53FB002A2326 /* ZBarReader.xib in Resources */,
+				9A26A8E013AFCD810036C1A1 /* mr_t.png in Resources */,
+				9A26A8E313AFCEC30036C1A1 /* mr_t1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
