@@ -10,10 +10,10 @@
 
 @implementation Conversations
 
-@synthesize date, body, recipient, sender, subject;
+@synthesize date, body, recipient, sender, subject, isOffer, identifier;
 
 
-+ (id)productWithType:(NSString *)date body:(NSArray *)body recipient:(NSString *)recipient sender:(NSString *)sender subject:(NSString *)subject
++ (id)productWithType:(NSString *)date body:(NSArray *)body recipient:(NSString *)recipient sender:(NSString *)sender subject:(NSString *)subject identifier:(NSString *)identifier
 {
 	Conversations *newConversation = [[[self alloc] init] autorelease];
 	newConversation.date = date;
@@ -21,6 +21,8 @@
     newConversation.recipient = recipient;
     newConversation.sender = sender;
     newConversation.subject = subject;
+    newConversation.identifier = identifier;
+    newConversation.isOffer = NO;
 	return newConversation;
 }
 
@@ -32,6 +34,7 @@
     [recipient release];
     [sender release];
     [subject release];
+    [identifier release];
 	[super dealloc];
 }
 

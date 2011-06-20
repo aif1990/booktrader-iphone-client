@@ -22,6 +22,7 @@
     NSString *username;
     NSMutableDictionary		*list;
     NSMutableArray *keys;
+    NSMutableArray *msg;
     
     IBOutlet booksAppDelegate *book;
     
@@ -29,7 +30,7 @@
 }
 @property(nonatomic, retain) booksAppDelegate *book;
 
-@property (nonatomic, retain) NSMutableArray *books;
+@property (nonatomic, retain) NSMutableArray *books, *msg;
 @property (nonatomic, retain) UITableView *TableView;
 @property (nonatomic, retain) Conversations *conversation;
 @property (nonatomic, retain) LoginView *loginView;

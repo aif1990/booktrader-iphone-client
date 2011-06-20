@@ -26,6 +26,7 @@
 @synthesize username;
 @synthesize list;
 @synthesize keys;
+@synthesize msg;
 
 @synthesize book;
 
@@ -35,10 +36,11 @@
     [super viewDidLoad];
     self.list = [[NSMutableDictionary alloc] init];
     self.keys = [[NSMutableArray alloc] init];
+    self.msg = [[NSMutableArray alloc] init];
     
     username = book.username;
     
-    NSLog(@"chatview: %@", username);
+    //NSLog(@"chatview: %@", username);
     
 }
 
@@ -65,6 +67,10 @@
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     
     NSDictionary *data = (NSDictionary *) [parser objectWithString:responseString error:nil];  
+    
+    [self.msg removeAllObjects];
+    
+    self.msg = (NSMutableArray*) [data objectForKey:@"unread"];
     
     if (!data || [(NSString*)[data objectForKey:@"status"] compare:@"error"] == NSOrderedSame) {
         
@@ -110,7 +116,15 @@
                 
                 //NSLog(@"creez vectorul%@", self.list);
                 
-                [[self.list valueForKey:user] addObject:[Conversations productWithType:[item objectForKey:@"date"] body:[item objectForKey:@"body"] recipient:[item objectForKey:@"recipient"] sender:[item objectForKey:@"sender"] subject:[item objectForKey:@"subject"]]];
+                Conversations *c = [Conversations productWithType:[item objectForKey:@"date"] body:[item objectForKey:@"body"] recipient:[item objectForKey:@"recipient"] sender:[item objectForKey:@"sender"] subject:[item objectForKey:@"subject"] identifier:[item objectForKey:@"identifier"]];
+                
+                if ([item objectForKey:@"apples"] != nil) {
+                    
+                    c.isOffer = YES;
+                    
+                }
+                
+                [[self.list valueForKey:user] addObject:c];
                 
             }
             
@@ -163,8 +177,63 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
+    
+    NSMutableArray *cvs;
+    
+    cvs = [self.list valueForKey:[self.keys objectAtIndex:indexPath.row]];
+    
+    Conversations *c = [cvs objectAtIndex:0];
+    
+    cell.textLabel.textColor = [UIColor blackColor];
+    
+    
+    if(c.isOffer == YES) {
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"Offer from %@", c.sender];
+        
+        
+        NSString* sends = [self.keys objectAtIndex:indexPath.row];
+        
+        NSLog(@"sends:%@", sends);
+        
+        
+        if([self.msg count] >0) {
+            
+            NSEnumerator *enumer = [self.msg objectEnumerator];
+            NSString* sender;
+            
+            while (sender = (NSMutableArray*) [enumer nextObject]){
+                
+                NSLog(@"sender: %@", sender);
+                
+                if([sender compare:sends] == 0)
+                    cell.textLabel.textColor = [UIColor redColor];
+            }
+        }
+
+        
+        
+    } else {
 	
     cell.textLabel.text = [self.keys objectAtIndex:indexPath.row];
+    
+    NSString* sends = [self.keys objectAtIndex:indexPath.row];
+        
+    
+    if([self.msg count] >0) {
+        
+        NSEnumerator *enumer = [self.msg objectEnumerator];
+        NSString* sender;
+        
+        while (sender = (NSMutableArray*) [enumer nextObject]){
+            
+            if([sender compare:sends] == 0)
+                cell.textLabel.textColor = [UIColor redColor];
+        }
+        
+    }
+        
+    }
     
     
 	[cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
@@ -174,20 +243,46 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-
-    
     NewChatConversation *settings = [[NewChatConversation alloc] initWithNibName:@"NewChatConversation" bundle:nil];
-    
     
     settings.convers = [self.list valueForKey:[self.keys objectAtIndex:indexPath.row]];
     
     settings.username = username;
     
+    Conversations *c = [settings.convers objectAtIndex:0];
+
+    NSString *nurl = [NSString stringWithFormat:@"http://abstractbinary.org:6543/messages/%@?format=json", c.identifier];
+    
+    NSURL *url = [NSURL URLWithString:nurl];
+    
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:5];
+    
+    NSURLResponse *response = NULL;
+    NSError *requestError = NULL;
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&requestError];
+    NSString *responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"url: %@\n", nurl);
+    NSLog(@"ident: %@\n", c.identifier);
+    
+    //NSLog(@"chat messages%@", responseString);
+    
+    
+   
+    
+    
+    if(c.isOffer == YES) {
+        
+        settings.title = [NSString stringWithFormat:@"Offer: %@", c.subject];
+    
+    } else {
+
     //settings.collectionViewController = self;
-    
-    
-    
     settings.title = [self.keys objectAtIndex:indexPath.row];
+        
+    }
     
     [[self navigationController] pushViewController:settings animated:YES];
     [settings release];

@@ -12,13 +12,16 @@
     NSString *recipient;
     NSString *sender;
     NSString *subject;
+    NSString *identifier;
+    BOOL isOffer;
 }
 
 @property (nonatomic, copy) NSString *date, *body;
 @property (nonatomic, copy) NSString *recipient;
-@property (nonatomic, copy) NSString *sender, *subject;
+@property (nonatomic, copy) NSString *sender, *subject, *identifier;
+@property (nonatomic, assign) BOOL isOffer;
 
-+ (id)productWithType:(NSString *)date body:(NSArray *)body recipient:(NSString *)recipient sender:(NSString*)sender subject:(NSString*)subject;
++ (id)productWithType:(NSString *)date body:(NSArray *)body recipient:(NSString *)recipient sender:(NSString*)sender subject:(NSString*)subject identifier:(NSString*)identifier;
 
 @end
 
