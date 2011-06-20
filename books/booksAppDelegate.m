@@ -128,7 +128,7 @@
     
     
     
-    NSString *first = @"http://abstractbinary.org:6543/search?query=";
+    NSString *first = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/search?query=";
     NSString *second = [first stringByAppendingString:[self urlEncodeValue:symbol.data]];
     NSString *nurl = [second stringByAppendingString:@"&type=books&format=json&Search=Search&limit=40"];
     

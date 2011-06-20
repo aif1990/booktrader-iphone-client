@@ -86,7 +86,7 @@
 - (IBAction)send {
     
     
-    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/messages/new"];
+    NSURL *url = [NSURL URLWithString:@"http://www.doc.ic.ac.uk/project/2010/271/g1027114/messages/new"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
     [request setHTTPMethod:@"POST"];

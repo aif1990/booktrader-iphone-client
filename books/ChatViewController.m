@@ -51,7 +51,7 @@
         username = @"nonExistingUser";
     
     
-    NSString *nurl = @"http://abstractbinary.org:6543/messages/list?format=json";
+    NSString *nurl = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/messages/list?format=json";
     
     NSURL *url = [NSURL URLWithString:nurl];
     
@@ -251,7 +251,7 @@
     
     Conversations *c = [settings.convers objectAtIndex:0];
 
-    NSString *nurl = [NSString stringWithFormat:@"http://abstractbinary.org:6543/messages/%@?format=json", c.identifier];
+    NSString *nurl = [NSString stringWithFormat:@"http://www.doc.ic.ac.uk/project/2010/271/g1027114/messages/%@?format=json", c.identifier];
     
     NSURL *url = [NSURL URLWithString:nurl];
     

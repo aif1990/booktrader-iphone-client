@@ -35,7 +35,7 @@
     self.list = [[NSMutableArray alloc] init];
     
     
-    NSString *first = @"http://abstractbinary.org:6543/users/";
+    NSString *first = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/users/";
     NSString *second = [first stringByAppendingString:username];
     NSString *nurl = [second stringByAppendingString:@"?format=json"];
     

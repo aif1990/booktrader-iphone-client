@@ -91,7 +91,7 @@
     
     //check the crashing problem when connected to a wi-fi but without password.
     
-    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/login"];
+    NSURL *url = [NSURL URLWithString:@"http://www.doc.ic.ac.uk/project/2010/271/g1027114/users/login"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:5];
     [request setHTTPMethod:@"POST"];

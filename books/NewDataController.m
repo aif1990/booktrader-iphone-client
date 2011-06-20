@@ -126,7 +126,7 @@
 -(IBAction)want {
     
     
-    NSString *first = @"http://abstractbinary.org:6543/books/";
+    NSString *first = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/books/";
     NSString *second = [first stringByAppendingString:product.identifier];
     NSString *nurl = [second stringByAppendingString:@"/want?format=json"];
     
@@ -187,7 +187,7 @@
 
 -(IBAction)have {
     
-    NSString *first = @"http://abstractbinary.org:6543/books/";
+    NSString *first = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/books/";
     NSString *second = [first stringByAppendingString:product.identifier];
     NSString *nurl = [second stringByAppendingString:@"/have?format=json"];
     

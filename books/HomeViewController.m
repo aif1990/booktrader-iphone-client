@@ -80,13 +80,13 @@
 
 - (void)openRegisterView {
     
-   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://abstractbinary.org:6543/users/register"]];
+   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.doc.ic.ac.uk/project/2010/271/g1027114/users/register"]];
     
 }
 
 - (void)Logout {
     
-    NSURL *url = [NSURL URLWithString:@"http://abstractbinary.org:6543/users/logout"];
+    NSURL *url = [NSURL URLWithString:@"http://www.doc.ic.ac.uk/project/2010/271/g1027114/users/logout"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     [request setTimeoutInterval:5];
@@ -137,7 +137,7 @@
         
         //gravatar
         
-        NSString *first = @"http://abstractbinary.org:6543/users/";
+        NSString *first = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/users/";
         NSString *second = [first stringByAppendingString:loginView.username];
         NSString *nurl = [second stringByAppendingString:@"/?format=json"];
         
@@ -218,7 +218,7 @@
         }
         
     
-    NSString *nurl1 = @"http://abstractbinary.org:6543/messages/list?format=json";
+    NSString *nurl1 = @"http://www.doc.ic.ac.uk/project/2010/271/g1027114/messages/list?format=json";
     
     NSURL *url1 = [NSURL URLWithString:nurl1];
     
