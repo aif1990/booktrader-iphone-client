@@ -17,7 +17,7 @@
 @implementation HomeViewController
 
 @synthesize bookDetailViewController;
-@synthesize welcomeMessage, wantedBooksNb, ownedBooksNb;
+@synthesize welcomeMessage, wantedBooksNb, ownedBooksNb, unreadMsg;
 @synthesize loginView;
 @synthesize booksViewController;
 @synthesize imgView;
@@ -97,6 +97,7 @@
     welcomeMessage.text = @"Not logged in";
     ownedBooksNb.text = @"";
     wantedBooksNb.text = @"";
+    unreadMsg.text = @"";
     
     [imgView setHidden:YES];
     [logIm setHidden:NO];
@@ -132,7 +133,7 @@
         booksViewController.username = loginView.username;
         
         book.username = loginView.username;
-        NSLog(@"homeview:%@", book.username);
+        //NSLog(@"homeview:%@", book.username);
         
         //gravatar
         
@@ -179,24 +180,87 @@
         NSMutableArray *wanted = (NSMutableArray*) [data objectForKey:@"want"];
         NSMutableArray *owned = (NSMutableArray*) [data objectForKey:@"owned"];
         
-        if ([owned count] >1) {
-            NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection*", [owned count]]; 
-            ownedBooksNb.text = txt1;
-        } else {
-            NSString *txt1 = [NSString stringWithFormat:@"*You have %d book in your collection*", [owned count]];
-            ownedBooksNb.text = txt1;
+        NSString* errors = (NSString*) [data objectForKey:@"status"];
+        
+        if([errors compare:@"error"] !=0) {
+        
+            if ([owned count] >1) {
+                NSString *txt1 = [NSString stringWithFormat:@"*You have %d books in your collection *", [owned count]]; 
+                ownedBooksNb.text = txt1;
+            } else {
+                    NSString *txt1 = [NSString stringWithFormat:@"*You have %d book in your collection*", [owned count]];
+                ownedBooksNb.text = txt1;
+            }
+        
+            if ([wanted count] >1) {
+                NSString *txt2 = [NSString stringWithFormat:@"**You want %d books**", [wanted count]];
+                wantedBooksNb.text = txt2;
+            } else {
+                NSString *txt2 = [NSString stringWithFormat:@"**You want %d book**", [wanted count]];
+                wantedBooksNb.text = txt2;
+            }
+        
+            
+            if([owned count] == 0) {
+                
+                NSString *txt10 = [NSString stringWithFormat:@"*You have no books in your collection *"]; 
+                ownedBooksNb.text = txt10;
+                
+            }
+            
+            if([wanted count] == 0) {
+                
+                NSString *txt20 = [NSString stringWithFormat:@"**You don't want any book**"];
+                wantedBooksNb.text = txt20;
+                
+            }
+            
         }
         
-        if ([wanted count] >1) {
-        NSString *txt2 = [NSString stringWithFormat:@"**You want %d books**", [wanted count]];
-            wantedBooksNb.text = txt2;
-        } else {
-            NSString *txt2 = [NSString stringWithFormat:@"**You want %d book**", [wanted count]];
-            wantedBooksNb.text = txt2;
-        }
-        
-    }
     
+    NSString *nurl1 = @"http://abstractbinary.org:6543/messages/list?format=json";
+    
+    NSURL *url1 = [NSURL URLWithString:nurl1];
+    
+    
+    NSMutableURLRequest *request1 = [NSMutableURLRequest requestWithURL:url1];
+    [request1 setTimeoutInterval:5];
+    
+    NSURLResponse *response1 = NULL;
+    NSError *requestError1 = NULL;
+    NSData *responseData1 = [NSURLConnection sendSynchronousRequest:request1 returningResponse:&response1 error:&requestError1];
+    NSString *responseString1 = [[[NSString alloc] initWithData:responseData1 encoding:NSUTF8StringEncoding] autorelease];
+    
+    SBJsonParser *parser1 = [[SBJsonParser alloc] init];
+
+    NSDictionary *data1 = (NSDictionary *) [parser1 objectWithString:responseString1 error:nil];
+    
+    NSMutableArray *msg = (NSMutableArray*) [data1 objectForKey:@"unread"];
+    
+    NSString* errorAns = (NSString*) [data1 objectForKey:@"status"];
+    
+    if ([errorAns compare:@"error"] != 0) {
+    
+        if ([msg count] > 1) {
+        NSString *txt3 = [NSString stringWithFormat:@"***You have %d unread messages***", [msg count]];
+        unreadMsg.text = txt3;
+        } else {
+            
+            NSString *txt31 = [NSString stringWithFormat:@"***You have %d unread message***", [msg count]];
+            unreadMsg.text = txt31;
+            
+        }
+        
+        if ([msg count] == 0) {
+            
+            
+            NSString *txt30 = [NSString stringWithFormat:@"***You don't have any unread messages***"];
+            unreadMsg.text = txt30;
+            
+        }
+    
+    }
+    }
     
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

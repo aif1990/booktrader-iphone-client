@@ -151,8 +151,13 @@
 	NSEnumerator *enumerator = [result objectEnumerator];
 	NSDictionary* item;
     
-    if ([result count] == 0)
-        return;
+    if ([result count] == 0) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Could not find any book" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+		[alert show];
+		[alert release];        
+    }
+        
 	
     
     item = (NSDictionary*)[enumerator nextObject];

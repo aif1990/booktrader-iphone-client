@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#include "ZBarSDK/Headers/ZBarSDK/ZBarSDK.h"
 
 
 #import "ZBarReader.h"

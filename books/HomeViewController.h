@@ -16,7 +16,7 @@
 @interface HomeViewController : UIViewController <UIActionSheetDelegate> {
     
     BookDetailViewController *bookDetailViewController;
-    IBOutlet UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb;
+    IBOutlet UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb, *unreadMsg;
     LoginView *loginView;
     IBOutlet BooksViewController *booksViewController;
     IBOutlet UIImageView *imgView;
@@ -36,7 +36,7 @@
 @property (nonatomic, retain) UIImageView *logIm;
 @property (nonatomic, retain) UIImageView *imgView;
 @property(nonatomic, retain) LoginView *loginView;
-@property(nonatomic, retain) UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb;
+@property(nonatomic, retain) UILabel *welcomeMessage, *wantedBooksNb, *ownedBooksNb, *unreadMsg;
 @property (nonatomic, retain) BookDetailViewController *bookDetailViewController;
 @property (nonatomic, retain) BooksViewController *booksViewController;
 

@@ -83,7 +83,7 @@
         }
     } else {
         
-        NSLog(@"data este %@", data);
+       // NSLog(@"data este %@", data);
         NSDictionary* conversations = [data objectForKey:@"conversations"];
         NSString* user;
         NSDictionary* item;
@@ -104,11 +104,11 @@
             
             NSArray *convs = [conversations objectForKey:user];
             NSEnumerator *enums = [convs objectEnumerator];
-            NSLog(@"utilizatorul este %@", convs);
+           // NSLog(@"utilizatorul este %@", convs);
             
             while (item = (NSDictionary*) [enums nextObject]) {
                 
-                NSLog(@"creez vectorul%@", self.list);
+                //NSLog(@"creez vectorul%@", self.list);
                 
                 [[self.list valueForKey:user] addObject:[Conversations productWithType:[item objectForKey:@"date"] body:[item objectForKey:@"body"] recipient:[item objectForKey:@"recipient"] sender:[item objectForKey:@"sender"] subject:[item objectForKey:@"subject"]]];
                 
@@ -117,7 +117,7 @@
         }
         
         
-        NSLog(@"bau %@", [self.list valueForKey:@"scvalex"]);
+       // NSLog(@"bau %@", [self.list valueForKey:@"scvalex"]);
     }
     
     [self.TableView reloadData];
