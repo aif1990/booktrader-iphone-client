@@ -16,6 +16,7 @@
 @synthesize mypassword;
 @synthesize myusername;
 @synthesize username;
+@synthesize logged_in;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -104,7 +105,6 @@
     [request setHTTPBody:requestBody];
     
     username = NULL;
-        
     
     NSURLResponse *response = NULL;
     NSError *requestError = NULL;
@@ -122,7 +122,7 @@
 	else if (response)
 	{
         
-        bool logged_in =  false;
+        logged_in =  false;
     
         for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage] cookies]) 
             if ([[cookie name] isEqualToString:@"auth_tkt"]) {
@@ -131,7 +131,7 @@
                 [self dismissModalViewControllerAnimated:YES];
             }
         
-        if (!logged_in) {
+        if (logged_in == false) {
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Wrong username/password " delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
             username = NULL;

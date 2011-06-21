@@ -35,7 +35,6 @@
     
     NewMessageView *settingDetail = [[NewMessageView alloc] initWithNibName:@"NewMessageView" bundle:nil];
     settingDetail.title = [NSString stringWithFormat:@"New Message"];
-    //[self.navigationController pushViewController:settingDetail animated:YES];
     [self.navigationController presentModalViewController:settingDetail animated:YES];
     [settingDetail release];
     
@@ -113,16 +112,6 @@
      // EXAMPLE: just grab the first barcode
      break;
     
-    
-    // EXAMPLE: do something useful with the barcode data
-    //resultText.text = symbol.data;
-    //resultText.text = @"9780262011532";
-    
-    
-    // EXAMPLE: do something useful with the barcode image
-    // resultImage.image =
-    //[info objectForKey: UIImagePickerControllerOriginalImage];
-    
     // ADD: dismiss the controller (NB dismiss from the *reader*!)
      [reader dismissModalViewControllerAnimated: YES];
     
@@ -165,28 +154,10 @@
     
     NSLog(@"am setat produsul %@:", product.title);
     
-    // product = [self.listContent objectAtIndex:0];
-    
-    searchViewController.product = product;
+      searchViewController.product = product;
     
     
     
 }
-
-
-
-/*- (IBAction) searchBarcode
-{
-    
-    ZBarReader *settingDetail = [[ZBarReader alloc] initWithNibName:@"ZBarReader" bundle:nil];
-    settingDetail.title = [NSString stringWithFormat:@"Barcode Reader"];
-    //[self.navigationController pushViewController:settingDetail animated:YES];
-    settingDetail.searchView = searchViewController;
-    
-    [self.navigationController presentModalViewController:settingDetail animated:YES];
-    [settingDetail release];
-    
-    }
-*/
 
 @end

@@ -98,6 +98,7 @@
     ownedBooksNb.text = @"";
     wantedBooksNb.text = @"";
     unreadMsg.text = @"";
+    loginView.logged_in = false;
     
     [imgView setHidden:YES];
     [logIm setHidden:NO];
@@ -173,6 +174,7 @@
         if (img != NULL) {
             [logIm setHidden:YES];
             [imgView setImage:img];
+            [imgView setHidden:NO];
         }    
 
         //gravatar appeared

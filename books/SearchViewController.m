@@ -69,10 +69,6 @@
         
         
     }
-
-    
-    
-   // self.searchDisplayController.searchBar.selectedScopeButtonIndex = 0;
     
 }
 
@@ -115,7 +111,6 @@
 	if (cell == nil)
 	{
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellID] autorelease];
-		//cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
 	/*
@@ -131,8 +126,6 @@
 	
 	cell.textLabel.text = product.title;
     
-    
-    //cell.textLabel.text = (NSString *)[self.jsonArray objectAtIndex:indexPath.row];
 	return cell;
 }
 

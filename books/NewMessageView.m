@@ -115,9 +115,6 @@
 	else if (response)
 	{
         
-           /* alert = [[UIAlertView alloc] initWithTitle:@"Sent" message:@"Message sent successfully" delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-            [alert show];
-            [alert release];*/
         [self dismissModalViewControllerAnimated:YES];
             
         }

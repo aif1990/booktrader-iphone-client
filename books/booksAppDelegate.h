@@ -51,6 +51,5 @@
 - (IBAction)openNewMessageView;
 - (IBAction) scanButtonTapped;
 - (IBAction) exits;
-//- (IBAction)searchBarcode;
 
 @end

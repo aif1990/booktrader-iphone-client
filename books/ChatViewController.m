@@ -141,6 +141,13 @@
 	
 }
 
+-(void)viewDidDisappear:(BOOL)animated{
+    
+    [self.list removeAllObjects];
+    [self.msg removeAllObjects];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -279,7 +286,6 @@
     
     } else {
 
-    //settings.collectionViewController = self;
     settings.title = [self.keys objectAtIndex:indexPath.row];
         
     }

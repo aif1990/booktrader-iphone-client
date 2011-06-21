@@ -101,7 +101,7 @@
 					<object class="IBUIImageView" id="122055900">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 64}, {64, 64}}</string>
+						<string key="NSFrame">{{20, 64}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="336166547"/>
@@ -111,7 +111,7 @@
 					<object class="IBUIImageView" id="336166547">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{28, 64}, {64, 64}}</string>
+						<string key="NSFrame">{{20, 64}, {64, 64}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1061213677"/>
@@ -182,7 +182,6 @@
 						<string key="NSFrame">{{39, 285}, {251, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -297,11 +296,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="664420589"/>
 							<reference ref="1061213677"/>
-							<reference ref="336166547"/>
-							<reference ref="122055900"/>
 							<reference ref="628125479"/>
 							<reference ref="796035476"/>
 							<reference ref="872217470"/>
+							<reference ref="336166547"/>
+							<reference ref="122055900"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
